@@ -1,16 +1,8 @@
 PODS:
   - YPAppMonitor (0.0.2)
-  - YYKit (1.0.9):
-    - YYKit/no-arc (= 1.0.9)
-  - YYKit/no-arc (1.0.9)
 
 DEPENDENCIES:
   - YPAppMonitor (from `https://github.com/zhuyuping/YPAppMonitor.git`)
-  - YYKit
-
-SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
-    - YYKit
 
 EXTERNAL SOURCES:
   YPAppMonitor:
@@ -18,13 +10,12 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   YPAppMonitor:
-    :commit: 70ca27c8f51cd78bf3eb856fe49319354d9c1968
+    :commit: 1bf97b7b494e90518c4b94f7e7a76697775d93c0
     :git: https://github.com/zhuyuping/YPAppMonitor.git
 
 SPEC CHECKSUMS:
-  YPAppMonitor: bff307799aac0a17cfdb68d7e2f96ba8c9082f4a
-  YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
+  YPAppMonitor: 78912c2ee2e6b56fa3e264c0643b0561e6e0cbad
 
-PODFILE CHECKSUM: 5e1b5ce3e8551d5eb2ceb1b7814ac21ab7c2427a
+PODFILE CHECKSUM: 4869598b670ad8708e011eb693d047c42c6d94dc
 
 COCOAPODS: 1.5.3

@@ -56,6 +56,7 @@
 		1C99008320BE743300B8BAC5 /* CrashTestVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrashTestVC.m; sourceTree = "<group>"; };
 		1C99008420BE743300B8BAC5 /* FluencyTestVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FluencyTestVC.h; sourceTree = "<group>"; };
 		1C99008520BE743300B8BAC5 /* MianViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MianViewController.h; sourceTree = "<group>"; };
+		1C9900E320BE9BFF00B8BAC5 /* YPAppMonitor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YPAppMonitor.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +107,7 @@
 		1C99006420BE732300B8BAC5 /* YPAppMonitor */ = {
 			isa = PBXGroup;
 			children = (
+				1C9900E320BE9BFF00B8BAC5 /* YPAppMonitor.h */,
 				1C99006520BE732300B8BAC5 /* AppFluency */,
 				1C99006820BE732300B8BAC5 /* Model */,
 				1C99006B20BE732300B8BAC5 /* AppCrash */,

@@ -9,6 +9,7 @@
     "tag": "0.0.2"
   },
   "source_files": "YPAppMonitor/**/*.{h,m}",
+  "public_header_files": "YPAppMonitor/**/*.{h}",
   "requires_arc": true,
   "platforms": {
     "ios": "8.0"

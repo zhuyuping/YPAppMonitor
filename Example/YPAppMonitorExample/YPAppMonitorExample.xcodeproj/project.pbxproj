@@ -189,12 +189,10 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-YPAppMonitorExample/Pods-YPAppMonitorExample-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/YPAppMonitor/YPAppMonitor.framework",
-				"${BUILT_PRODUCTS_DIR}/YYKit/YYKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YPAppMonitor.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -352,14 +350,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HFDBB878GT;
+				DEVELOPMENT_TEAM = N46VGUZVN4;
 				INFOPLIST_FILE = YPAppMonitorExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ZYP.YPAppMonitorExample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ZYP.YPAppMonitorExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -371,14 +369,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HFDBB878GT;
+				DEVELOPMENT_TEAM = N46VGUZVN4;
 				INFOPLIST_FILE = YPAppMonitorExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ZYP.YPAppMonitorExample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ZYP.YPAppMonitorExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
