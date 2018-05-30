@@ -6,10 +6,9 @@ Demo Project
 ==============
 See `Demo/YPAppMonitor.xcodeproj`
 
-In YPAppFluencyMonitor
-a. using '+ (void)start' method can only print backtrace in console if APP in DEBUG mode;
-b. using '+ (void)startWithAlertShowResult' method can show an alert view in your Viewcontroller;
-c. using '+ (void)startWithCompletedHandler:(yp_flunecy_handler)handler' method, your can handle backtrace in the block;
+- using '+ (void)start' method can only print backtrace in console if APP in DEBUG mode.
+- using '+ (void)startWithAlertShowResult' method can show an alert view in your Viewcontroller.
+- using '+ (void)startWithCompletedHandler:(yp_flunecy_handler)handler' method, your can handle backtrace in the block.
 
 Installation
 ==============
