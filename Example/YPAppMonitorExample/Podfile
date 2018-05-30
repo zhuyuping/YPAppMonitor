@@ -1,0 +1,7 @@
+
+platform :ios, '8.0'
+
+target 'YPAppMonitorExample' do
+  pod 'YPAppMonitor', :git => 'https://github.com/zhuyuping/YPAppMonitor.git'
+
+end

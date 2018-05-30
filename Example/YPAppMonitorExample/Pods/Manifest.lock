@@ -1,0 +1,21 @@
+PODS:
+  - YPAppMonitor (0.0.1)
+
+DEPENDENCIES:
+  - YPAppMonitor (from `https://github.com/zhuyuping/YPAppMonitor.git`)
+
+EXTERNAL SOURCES:
+  YPAppMonitor:
+    :git: https://github.com/zhuyuping/YPAppMonitor.git
+
+CHECKOUT OPTIONS:
+  YPAppMonitor:
+    :commit: 89f6ee883614cda2f4972a79950e3997a4a1be46
+    :git: https://github.com/zhuyuping/YPAppMonitor.git
+
+SPEC CHECKSUMS:
+  YPAppMonitor: c00cb33a796c1a6d3b6d909685c7c92998065dfd
+
+PODFILE CHECKSUM: 03cb801900d9d07441f260b4d90a94f9a5beaa27
+
+COCOAPODS: 1.5.3
