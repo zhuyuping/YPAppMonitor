@@ -1,0 +1,6 @@
+framework module YPAppMonitor {
+  umbrella header "YPAppMonitor-umbrella.h"
+
+  export *
+  module * { export * }
+}
