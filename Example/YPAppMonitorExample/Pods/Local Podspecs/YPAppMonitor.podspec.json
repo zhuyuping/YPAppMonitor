@@ -1,18 +1,22 @@
 {
   "name": "YPAppMonitor",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
-  "summary": "私人pod代码",
+  "summary": "App监控",
   "homepage": "https://github.com/zhuyuping/YPAppMonitor",
   "source": {
     "git": "https://github.com/zhuyuping/YPAppMonitor.git",
-    "tag": "0.0.1"
+    "tag": "0.0.2"
   },
-  "source_files": "YPAppMonitor/*.{h,m}",
+  "source_files": "YPAppMonitor/**/*.{h,m}",
   "requires_arc": true,
   "platforms": {
     "ios": "8.0"
   },
+  "frameworks": [
+    "UIKit",
+    "Foundation"
+  ],
   "authors": {
     "ZYP": "iOS Dev"
   },

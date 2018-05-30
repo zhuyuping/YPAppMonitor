@@ -13,6 +13,6 @@
 FOUNDATION_EXPORT double YPAppMonitorVersionNumber;
 FOUNDATION_EXPORT const unsigned char YPAppMonitorVersionString[];
 
-//#import <YPAppMonitor/YPAppFluencyMonitor.h>
+#import <YPAppMonitor/YPAppFluencyMonitor.h>
 
 #endif

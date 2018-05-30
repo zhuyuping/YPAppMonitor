@@ -13,11 +13,10 @@
 		1C9900D720BE80EC00B8BAC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C9900D620BE80EC00B8BAC5 /* Assets.xcassets */; };
 		1C9900DA20BE80EC00B8BAC5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C9900D820BE80EC00B8BAC5 /* LaunchScreen.storyboard */; };
 		1C9900DD20BE80EC00B8BAC5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C9900DC20BE80EC00B8BAC5 /* main.m */; };
-		7994BB77911E0970BDD8218B /* libPods-YPAppMonitorExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0857326FCB334AB17DF34718 /* libPods-YPAppMonitorExample.a */; };
+		5E571E1F9743D70FDCCC2532 /* Pods_YPAppMonitorExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6FAF898862D6AE505A4C2BF /* Pods_YPAppMonitorExample.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0857326FCB334AB17DF34718 /* libPods-YPAppMonitorExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YPAppMonitorExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C9900CA20BE80EB00B8BAC5 /* YPAppMonitorExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YPAppMonitorExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C9900CD20BE80EB00B8BAC5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1C9900CE20BE80EB00B8BAC5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -30,6 +29,7 @@
 		1C9900DC20BE80EC00B8BAC5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3C5BAE2D001D9004AE194A66 /* Pods-YPAppMonitorExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YPAppMonitorExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YPAppMonitorExample/Pods-YPAppMonitorExample.debug.xcconfig"; sourceTree = "<group>"; };
 		40B18ECF9C527341B2CD9CAE /* Pods-YPAppMonitorExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YPAppMonitorExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-YPAppMonitorExample/Pods-YPAppMonitorExample.release.xcconfig"; sourceTree = "<group>"; };
+		E6FAF898862D6AE505A4C2BF /* Pods_YPAppMonitorExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YPAppMonitorExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,7 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7994BB77911E0970BDD8218B /* libPods-YPAppMonitorExample.a in Frameworks */,
+				5E571E1F9743D70FDCCC2532 /* Pods_YPAppMonitorExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,7 +81,7 @@
 		37DDC411C934FCBF2A764EDF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0857326FCB334AB17DF34718 /* libPods-YPAppMonitorExample.a */,
+				E6FAF898862D6AE505A4C2BF /* Pods_YPAppMonitorExample.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -106,6 +106,7 @@
 				1C9900C620BE80EB00B8BAC5 /* Sources */,
 				1C9900C720BE80EB00B8BAC5 /* Frameworks */,
 				1C9900C820BE80EB00B8BAC5 /* Resources */,
+				AA848E2E98F3756214123B55 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -178,6 +179,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AA848E2E98F3756214123B55 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-YPAppMonitorExample/Pods-YPAppMonitorExample-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/YPAppMonitor/YPAppMonitor.framework",
+				"${BUILT_PRODUCTS_DIR}/YYKit/YYKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YPAppMonitor.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YPAppMonitorExample/Pods-YPAppMonitorExample-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
