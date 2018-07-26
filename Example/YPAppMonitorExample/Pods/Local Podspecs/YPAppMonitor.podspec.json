@@ -1,12 +1,12 @@
 {
   "name": "YPAppMonitor",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "license": "MIT",
   "summary": "App监控",
   "homepage": "https://github.com/zhuyuping/YPAppMonitor",
   "source": {
     "git": "https://github.com/zhuyuping/YPAppMonitor.git",
-    "tag": "0.0.2"
+    "tag": "0.0.4"
   },
   "source_files": "YPAppMonitor/**/*.{h,m}",
   "public_header_files": "YPAppMonitor/**/*.{h}",

@@ -16,7 +16,7 @@
 #endif
 
 
-static const NSUInteger kMaxLoggerNumber = 20;
+//static const NSUInteger kMaxLoggerNumber = 20;
 static NSString * const kLoggerDatabaseFileName = @"crash_logger.sqlite";
 
 

@@ -1,6 +1,6 @@
 //
 //  YYDispatchQueueManager.h
-//  YYKit <https://github.com/ibireme/YYKit>
+//  
 //
 //  Created by ibireme on 15/7/18.
 //  Copyright (c) 2015 ibireme.

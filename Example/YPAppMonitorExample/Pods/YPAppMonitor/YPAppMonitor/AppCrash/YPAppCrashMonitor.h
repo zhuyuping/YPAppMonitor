@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^yp_crash_handler)(NSString *crashInfoString);
+
 @interface YPAppCrashMonitor : NSObject
 
-+ (void)startMonitor ;
++ (void)startWithCompletedHandler:(yp_crash_handler)handler ;
 
 @end

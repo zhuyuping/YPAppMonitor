@@ -1,5 +1,5 @@
 PODS:
-  - YPAppMonitor (0.0.2)
+  - YPAppMonitor (0.0.4)
 
 DEPENDENCIES:
   - YPAppMonitor (from `https://github.com/zhuyuping/YPAppMonitor.git`)
@@ -10,11 +10,11 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   YPAppMonitor:
-    :commit: 1bf97b7b494e90518c4b94f7e7a76697775d93c0
+    :commit: 2a8f2d4c09b4a068f46a275bfc3d3ac92a3909b0
     :git: https://github.com/zhuyuping/YPAppMonitor.git
 
 SPEC CHECKSUMS:
-  YPAppMonitor: 78912c2ee2e6b56fa3e264c0643b0561e6e0cbad
+  YPAppMonitor: 209e95cb497ad44ac4bf7cb6b89a287516c00220
 
 PODFILE CHECKSUM: 4869598b670ad8708e011eb693d047c42c6d94dc
 
