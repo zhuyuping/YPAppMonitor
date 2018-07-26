@@ -2,7 +2,7 @@
 //  YPCrashLogger.h
 //
 //
-//  Created by linxinda on 2017/4/27.
+//  Created by yp on 2017/4/27.
 //  Copyright © 2017年 zyp. All rights reserved.
 //
 

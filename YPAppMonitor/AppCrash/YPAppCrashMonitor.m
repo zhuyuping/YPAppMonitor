@@ -7,14 +7,21 @@
 //
 
 #import "YPAppCrashMonitor.h"
-#import "ZYPAppCrashInfo.h"
+#import "YPAppCrashInfo.h"
 #import "YPBacktraceLogger.h"
 #import "UIViewController+ZYPMonitor.h"
 #import "YPCrashLogger.h"
+#import "NSDictionary+YP_Extension.h"
+
+static BOOL yp_crash_is_monitoring = NO ;
+yp_crash_handler yp_crash_result_handler = nil;
 
 @implementation YPAppCrashMonitor
 
-+ (void)startMonitor {
++ (void)startWithCompletedHandler:(yp_crash_handler)handler {
+    if (yp_crash_is_monitoring) return;
+    
+    yp_crash_result_handler = handler;
     NSSetUncaughtExceptionHandler(__exception_caught);
     signal(SIGILL, __YP_signal_handler);
     signal(SIGFPE, __YP_signal_handler);
@@ -22,7 +29,10 @@
     signal(SIGPIPE, __YP_signal_handler);
     signal(SIGSEGV, __YP_signal_handler);
     signal(SIGABRT, __YP_signal_handler);
+    yp_crash_is_monitoring = YES;
+    
 }
+
 
 + (void)_killApp {
     NSSetUncaughtExceptionHandler(NULL);
@@ -37,28 +47,15 @@
 
 static void __exception_caught(NSException *exception) {
     
-    NSString *deviceModel = [UIDevice currentDevice].model;
-    NSString *OS_Info = [NSString stringWithFormat:@"%@%@",[UIDevice currentDevice].systemName,[UIDevice currentDevice].systemVersion];
-    NSDictionary *infoDict = [[NSBundle mainBundle] infoDictionary];
-    NSString *applicationVersion = infoDict[@"CFBundleShortVersionString"];
-    NSString *applicationInfo = [NSString stringWithFormat:@"device:%@\n OS_Version:%@\n OS_System:%@",deviceModel,applicationVersion,OS_Info];
-    NSString *stackInfo = [YPBacktraceLogger YP_backtraceOfCurrentThread];
+    NSString *stackInfo = [YPBacktraceLogger YP_backtraceOfAllThread];
     NSString *topViewControllerClassName = NSStringFromClass([[UIViewController YP_findTopViewController] class]);
-    
-    ZYPAppCrashInfo *info = [ZYPAppCrashInfo crashInfoWithName:exception.name
+    YPAppCrashInfo *info = [YPAppCrashInfo crashInfoWithName:exception.name
                                                         reason:exception.reason
                                                      stackInfo:stackInfo
-                                                     crashTime:[NSDate date]
-                                             topViewController:topViewControllerClassName
-                                               applicationInfo:applicationInfo];
-    
-    YPCrashLogger * crashLogger = [YPCrashLogger crashLoggerWithName: exception.name
-                                                                reason: exception.reason
-                                                             stackInfo: [YPBacktraceLogger YP_backtraceOfCurrentThread]
-                                                             crashTime: [NSDate date]
-                                                     topViewController: topViewControllerClassName
-                                                    applicationVersion: applicationInfo];
-    [[YPCrashLoggerServer sharedServer] insertLogger: crashLogger];
+                                             topViewController:topViewControllerClassName];
+    if (yp_crash_result_handler) {
+        yp_crash_result_handler(info.dictionary.jsonString);
+    }
 }
 
 static void __YP_signal_handler(int signal) {

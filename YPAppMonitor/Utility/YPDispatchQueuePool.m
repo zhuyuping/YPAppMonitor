@@ -1,6 +1,6 @@
 //
 //  YPDispatchQueueManager.m
-//  YPKit <https://github.com/ibireme/YPKit>
+//  代码出自https://github.com/ibireme/YYKit 加工修改
 //
 //  Created by ibireme on 15/7/18.
 //  Copyright (c) 2015 ibireme.
@@ -16,6 +16,8 @@
 #define MAX_QUEUE_COUNT 32
 
 #pragma mark - private
+
+
 
 static inline dispatch_queue_priority_t NSQualityOfServiceToDispatchPriority(NSQualityOfService qos) {
     switch (qos) {

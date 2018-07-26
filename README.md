@@ -22,4 +22,4 @@ Installation
 
 Requirements
 ==============
-This library requires `iOS 6.0+` and `Xcode 8.0+`.
+This library requires `iOS 7.0+` and `Xcode 8.0+`.

@@ -114,6 +114,9 @@ static inline dispatch_queue_t YP_log_IO_queue() {
     }
     NSMutableString * result = @"".mutableCopy;
     for (int idx = 0; idx < thread_count; idx++) {
+        if (threads[idx] == main_thread_id){
+            [result appendString:@"(MainThread)"];
+        }
         [result appendString: _YP_backtraceOfThread(threads[idx])];
     }
     return result.copy;
@@ -179,10 +182,23 @@ thread_t YP_machThreadFromNSThread(NSThread * nsthread) {
     return mach_thread_self();
 }
 
+NSString * _YP_nameOfMachThread(thread_t thread) {
+    pthread_t pt = pthread_from_mach_thread_np(thread);
+    char name[256];
+    
+    pthread_getname_np(pt, name, sizeof(name));
+    if (pt) {
+        return [NSString stringWithUTF8String:name];
+    }
+    return @"unknow name";
+}
+
 NSString * _YP_backtraceOfThread(thread_t thread) {
     uintptr_t backtraceBuffer[MAX_FRAME_NUMBER];
     int idx = 0;
-    NSMutableString * result = [NSString stringWithFormat: @"Backtrace of Thread %u:\n======================================================================================\n", thread].mutableCopy;
+    NSString *threadName = _YP_nameOfMachThread(thread);
+    NSLog(@"threadName:%@",threadName);
+    NSMutableString * result = [NSString stringWithFormat: @"\nBacktrace of Thread (%@)%u:\n======================================================================================\n",threadName ,thread].mutableCopy;
     
     _STRUCT_MCONTEXT machineContext;
     if (!YP_fillThreadStateIntoMachineContext(thread, &machineContext)) {
@@ -219,8 +235,7 @@ NSString * _YP_backtraceOfThread(thread_t thread) {
     for (int idx = 0; idx < backtraceLength; idx++) {
         [result appendFormat: @"%@", YP_logBacktraceEntry(idx, backtraceBuffer[idx], &symbolicated[idx])];
     }
-    [result appendString: @"\n"];
-    [result appendString: @"======================================================================================"];
+    [result appendString: @"======================================================================================\n"];
     return result.copy;
 }
 

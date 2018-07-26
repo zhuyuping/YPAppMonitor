@@ -8,6 +8,9 @@
 
 #import "MianViewController.h"
 #import "FluencyTestVC.h"
+#import "YPAppFluencyMonitor.h"
+#import "YPAppMonitor.h"
+
 @interface MianViewController ()
 
 @property (nonatomic, readwrite, strong) NSArray *dataList;
@@ -20,6 +23,11 @@
     [super viewDidLoad];
     self.title = @"ZYPAppMonitor";
     _dataList = @[@"1.流畅性监控",@"2.崩溃日志收集"];
+    YPAppMonitorConfiguration *config = [YPAppMonitorConfiguration new];
+    config.useCrashMonitoring = YES;
+    config.useFluencymonitoring = YES;
+    config.reportServerUrl = [NSURL URLWithString:@"http://127.0.0.1:8088/YPAppMonitor/"];
+    [YPAppMonitor startWithConfiguration:config];
 }
 
 - (void)didReceiveMemoryWarning {

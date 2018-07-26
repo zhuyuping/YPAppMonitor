@@ -11,10 +11,8 @@ typedef void(^yp_flunecy_handler)(NSString *backtrace);
 
 @interface YPAppFluencyMonitor : NSObject
 
-+ (void)start ;
-+ (void)startWithAlertShowResult ;
 + (void)startWithCompletedHandler:(yp_flunecy_handler)handler ;
-
++ (void)startWithResultShowAlert:(BOOL)show completedHandler:(yp_flunecy_handler)handler ;
 + (void)stop ;
 
 @end

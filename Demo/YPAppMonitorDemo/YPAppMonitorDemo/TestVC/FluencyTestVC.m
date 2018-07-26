@@ -8,6 +8,7 @@
 
 #import "FluencyTestVC.h"
 #import "YPAppFluencyMonitor.h"
+#import "YPAppMonitor.h"
 
 @interface FluencyTestVC ()
 
@@ -17,7 +18,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [YPAppFluencyMonitor startWithAlertShowResult];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
 }
 

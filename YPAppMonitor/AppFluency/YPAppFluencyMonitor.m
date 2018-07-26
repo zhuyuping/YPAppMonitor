@@ -9,6 +9,8 @@
 #import "YPAppFluencyMonitor.h"
 #import "YPBacktraceLogger.h"
 #import "UIViewController+ZYPMonitor.h"
+#import "YPAppFluencyInfo.h"
+#import "NSDictionary+YP_Extension.h"
 
 static BOOL yp_fluency_is_monitoring = NO ;
 static NSTimeInterval yp_fluency_timeout_interval = 0.3;
@@ -56,7 +58,9 @@ static inline void __fluency_semaphore_init(){
                 [YPBacktraceLogger YP_logMain];
 #endif
                 if (yp_fluency_result_handler) {
-                    yp_fluency_result_handler([YPBacktraceLogger YP_backtraceOfMainThread]);
+                    NSString *topViewControllerClassName = NSStringFromClass([[UIViewController YP_findTopViewController] class]);
+                    YPAppFluencyInfo *info  = [YPAppFluencyInfo fluencyInfoWithStackInfo:[YPBacktraceLogger YP_backtraceOfMainThread] topViewController:topViewControllerClassName];
+                    yp_fluency_result_handler(info.dictionary.jsonString);
                 }
                 
                 if (yp_fluency_defaultShow_falg) {
@@ -76,16 +80,14 @@ static inline void __fluency_semaphore_init(){
     });
 }
 
-+ (void)startWithAlertShowResult {
-    if (yp_fluency_is_monitoring) return;
-    yp_fluency_defaultShow_falg = YES;
-    
-    [self start];
-}
 
 + (void)startWithCompletedHandler:(yp_flunecy_handler)handler {
+    [self startWithResultShowAlert:NO completedHandler:handler];
+}
+
++ (void)startWithResultShowAlert:(BOOL)show completedHandler:(yp_flunecy_handler)handler {
     if (yp_fluency_is_monitoring) return;
-    
+    yp_fluency_defaultShow_falg = show;
     yp_fluency_result_handler = handler;
     [self start];
 }
@@ -93,6 +95,8 @@ static inline void __fluency_semaphore_init(){
 + (void)stop {
     if (!yp_fluency_is_monitoring) return;
     yp_fluency_is_monitoring = NO;
+    yp_fluency_result_handler = nil;
+    yp_fluency_defaultShow_falg = NO;
 }
 
 @end

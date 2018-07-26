@@ -7,7 +7,6 @@
 //
 
 #import "ViewController.h"
-#import "YPAppFluencyMonitor.h"
 
 @interface ViewController ()
 
@@ -17,7 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [YPAppFluencyMonitor start];
+    
 }
 
 
