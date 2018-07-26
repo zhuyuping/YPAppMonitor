@@ -10,7 +10,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   YPAppMonitor:
-    :commit: ce843c4e630f0f2a7e818f5d710c5309956f8930
+    :commit: d9a9daa3633a7c1c73385719ed841418cdcc6f9d
     :git: https://github.com/zhuyuping/YPAppMonitor.git
 
 SPEC CHECKSUMS:

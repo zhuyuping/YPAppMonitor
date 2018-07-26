@@ -10,13 +10,7 @@
 
 #if __has_include(<YPAppMonitor/YPAppMonitor.h>)
 
-FOUNDATION_EXPORT double YPAppMonitorVersionNumber = 3;
-FOUNDATION_EXPORT const unsigned char YPAppMonitorVersionString[] = "0.0.4";
-
-#import <YPAppMonitor/YPAppFluencyMonitor.h>
-
 #endif
-
 
 @interface YPAppMonitorConfiguration : NSObject
 

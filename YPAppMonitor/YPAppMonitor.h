@@ -23,8 +23,9 @@
 
 @interface YPAppMonitor : NSObject
 
-@property (nonatomic, strong)YPAppMonitorConfiguration *config;
+@property (nonatomic, readwrite, strong)YPAppMonitorConfiguration *config;
 
+// may use default config while config is nil
 + (void)startWithConfiguration:(YPAppMonitorConfiguration *)config ;
 
 @end

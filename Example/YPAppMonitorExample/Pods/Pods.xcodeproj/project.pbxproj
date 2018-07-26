@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -75,7 +75,7 @@
 		105999B43EE2CE77147453009DFD8A61 /* Pods-YPAppMonitorExample.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-YPAppMonitorExample.modulemap"; sourceTree = "<group>"; };
 		124806C9490F5C2A0B0834DED5C9D7C4 /* Pods-YPAppMonitorExample-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-YPAppMonitorExample-umbrella.h"; sourceTree = "<group>"; };
 		12917945EDE1F33CD492FCDB6D407C6E /* YPPersistency.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YPPersistency.h; path = YPAppMonitor/Persistency/YPPersistency.h; sourceTree = "<group>"; };
-		19AF97853B6C2DE015D2F67210811DE2 /* YPAppMonitor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = YPAppMonitor.framework; path = YPAppMonitor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		19AF97853B6C2DE015D2F67210811DE2 /* YPAppMonitor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = YPAppMonitor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A9860354D156580347E7C5FC28D9A50 /* UIViewController+ZYPMonitor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+ZYPMonitor.m"; path = "YPAppMonitor/Base/UIViewController+ZYPMonitor.m"; sourceTree = "<group>"; };
 		1DB994F396266205EECDE1EA84687328 /* NSString+YP_Extension.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSString+YP_Extension.h"; path = "YPAppMonitor/YPKit/NSString+YP_Extension.h"; sourceTree = "<group>"; };
 		20E348481D47D5FDC24D43B3903AE538 /* YPAppMonitor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YPAppMonitor.m; path = YPAppMonitor/YPAppMonitor.m; sourceTree = "<group>"; };
@@ -102,7 +102,7 @@
 		908E902E026C5C22904CF9014A5604AD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		91DB28B9EAEFA4AD4B36704FE05E9147 /* NSDictionary+YP_Extension.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+YP_Extension.h"; path = "YPAppMonitor/YPKit/NSDictionary+YP_Extension.h"; sourceTree = "<group>"; };
 		9336B095AB6ED7FA2D1FDC88C7970C6B /* Pods-YPAppMonitorExample-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-YPAppMonitorExample-acknowledgements.markdown"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9B407860B11A07C6D1BE8411B71E6CBF /* YPAppMonitor.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = YPAppMonitor.modulemap; sourceTree = "<group>"; };
 		9D1A5042389F8AB101C0E90FB5F7280A /* YPAppCrashInfo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YPAppCrashInfo.m; path = YPAppMonitor/Model/YPAppCrashInfo.m; sourceTree = "<group>"; };
 		9D747B994BCB4697CE956DDB9E956682 /* YPAppMonitor-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "YPAppMonitor-umbrella.h"; sourceTree = "<group>"; };
@@ -130,7 +130,7 @@
 		F254268D418F3FC873206E662826C728 /* YPMonitorReporter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YPMonitorReporter.h; path = YPAppMonitor/Persistency/YPMonitorReporter.h; sourceTree = "<group>"; };
 		F6A1297D8F36E3523A49CA61A14CC82D /* YPMonitorReporter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YPMonitorReporter.m; path = YPAppMonitor/Persistency/YPMonitorReporter.m; sourceTree = "<group>"; };
 		FA711A5F32238EFE16C4F5DDF87991CC /* UIDevice+YP_Extension.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIDevice+YP_Extension.m"; path = "YPAppMonitor/YPKit/UIDevice+YP_Extension.m"; sourceTree = "<group>"; };
-		FC73ED4F342EE49AA081B3D0432E3DC4 /* Pods_YPAppMonitorExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_YPAppMonitorExample.framework; path = "Pods-YPAppMonitorExample.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC73ED4F342EE49AA081B3D0432E3DC4 /* Pods_YPAppMonitorExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YPAppMonitorExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCC3C71574BF71394D9289277180FF33 /* YPAppFluencyInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YPAppFluencyInfo.h; path = YPAppMonitor/Model/YPAppFluencyInfo.h; sourceTree = "<group>"; };
 		FEDB62BA6213B818F93FF6EAAB3AAE86 /* YPReport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YPReport.h; path = YPAppMonitor/Model/YPReport.h; sourceTree = "<group>"; };
 		FF5B47592D619345F98328AA1FACE04D /* YP_Extension.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YP_Extension.h; path = YPAppMonitor/YPKit/YP_Extension.h; sourceTree = "<group>"; };
@@ -232,7 +232,6 @@
 				DEAD33665090C77459A5AA0DC0C6F973 /* YPReporterNetworkOperation.m */,
 				AF46701EDD1E249BED0B4064FA901E94 /* Support Files */,
 			);
-			name = YPAppMonitor;
 			path = YPAppMonitor;
 			sourceTree = "<group>";
 		};
@@ -530,11 +529,7 @@
 				INFOPLIST_FILE = "Target Support Files/YPAppMonitor/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/YPAppMonitor/YPAppMonitor.modulemap";
 				PRODUCT_MODULE_NAME = YPAppMonitor;
 				PRODUCT_NAME = YPAppMonitor;
@@ -564,11 +559,7 @@
 				INFOPLIST_FILE = "Target Support Files/YPAppMonitor/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/YPAppMonitor/YPAppMonitor.modulemap";
 				PRODUCT_MODULE_NAME = YPAppMonitor;
 				PRODUCT_NAME = YPAppMonitor;
@@ -599,11 +590,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-YPAppMonitorExample/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-YPAppMonitorExample/Pods-YPAppMonitorExample.modulemap";
 				OTHER_LDFLAGS = "";
@@ -637,11 +624,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-YPAppMonitorExample/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-YPAppMonitorExample/Pods-YPAppMonitorExample.modulemap";
 				OTHER_LDFLAGS = "";

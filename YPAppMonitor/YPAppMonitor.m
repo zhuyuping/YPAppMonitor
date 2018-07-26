@@ -64,6 +64,8 @@
 }
 
 + (void)startWithConfiguration:(YPAppMonitorConfiguration *)config {
+    NSAssert(config, @"YPAppMonitorConfiguration must not be nil");
+    NSAssert(config.reportServerBaseUrl, @"YPAppMonitorConfiguration.reportServerBaseUrl must not be  nil");
     
     [YPAppMonitor sharedInstance].config = config;
     if (config.useFluencymonitoring || config.useCrashMonitoring) {
@@ -82,7 +84,6 @@
             [[YPMonitorReporter sharedInstance] addReport:report];
         }];
     }
-    
 }
 
 - (void)suspend {
