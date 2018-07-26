@@ -13,8 +13,8 @@
 FOUNDATION_EXPORT double YPAppMonitorVersionNumber;
 FOUNDATION_EXPORT const unsigned char YPAppMonitorVersionString[];
 
-YPAppMonitorVersionNumber = 1;
-YPAppMonitorVersionString = @"0.0.3"
+YPAppMonitorVersionNumber = 3;
+YPAppMonitorVersionString = @"0.0.4"
 
 #import <YPAppMonitor/YPAppFluencyMonitor.h>
 
@@ -26,7 +26,8 @@ YPAppMonitorVersionString = @"0.0.3"
 @property(nonatomic, assign) BOOL useFluencymonitoring;                         // default is Yes
 @property(nonatomic, assign) BOOL showAlertWhenNotFluency;                      // default is NO
 @property(nonatomic, assign) BOOL useCrashMonitoring;                           // default is Yes
-@property(nonatomic, strong) NSURL *reportServerUrl;                            // default is nil
+@property(nonatomic, strong) NSURL *reportServerBaseUrl;                        // default is nil
+
 @end
 
 @interface YPAppMonitor : NSObject

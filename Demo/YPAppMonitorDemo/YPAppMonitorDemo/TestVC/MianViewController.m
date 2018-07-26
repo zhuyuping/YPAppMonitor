@@ -26,7 +26,7 @@
     YPAppMonitorConfiguration *config = [YPAppMonitorConfiguration new];
     config.useCrashMonitoring = YES;
     config.useFluencymonitoring = YES;
-    config.reportServerUrl = [NSURL URLWithString:@"http://127.0.0.1:8088/YPAppMonitor/"];
+    config.reportServerBaseUrl = [NSURL URLWithString:@"http://127.0.0.1:8088/YPAppMonitor/"];
     [YPAppMonitor startWithConfiguration:config];
 }
 

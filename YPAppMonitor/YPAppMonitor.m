@@ -67,7 +67,7 @@
     
     [YPAppMonitor sharedInstance].config = config;
     if (config.useFluencymonitoring || config.useCrashMonitoring) {
-        [[YPMonitorReporter sharedInstance] configReportUrl:config.reportServerUrl];
+        [[YPMonitorReporter sharedInstance] configReportUrl:config.reportServerBaseUrl];
         [[YPMonitorReporter sharedInstance] resume];
     }
     if (config.useFluencymonitoring) {
