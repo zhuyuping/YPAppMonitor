@@ -8,7 +8,7 @@
     "git": "https://github.com/zhuyuping/YPAppMonitor.git",
     "tag": "0.0.4"
   },
-  "source_files": "YPAppMonitor/{AppCrash,AppFluency}/*",
+  "source_files": "YPAppMonitor/**/*",
   "public_header_files": "YPAppMonitor/YPAppMonitor.h",
   "requires_arc": true,
   "platforms": {

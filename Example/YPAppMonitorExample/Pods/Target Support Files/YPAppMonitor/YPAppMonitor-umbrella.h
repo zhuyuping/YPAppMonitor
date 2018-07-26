@@ -10,8 +10,7 @@
 #endif
 #endif
 
-#import "YPAppCrashMonitor.h"
-#import "YPAppFluencyMonitor.h"
+#import "YPAppMonitor.h"
 
 FOUNDATION_EXPORT double YPAppMonitorVersionNumber;
 FOUNDATION_EXPORT const unsigned char YPAppMonitorVersionString[];
