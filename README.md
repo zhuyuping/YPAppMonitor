@@ -1,25 +1,53 @@
 # YPAppMonitor
 
-app fluency/crash monitor
+This is an App fluency/crash monitor.it can update record to the specific server.
 
-Demo Project
+
+
+Using CocoaPods
+
 ==============
-See `Demo/YPAppMonitor.xcodeproj`
-
-- using '+ (void)start' method can only print backtrace in console if APP in DEBUG mode.
-- using '+ (void)startWithAlertShowResult' method can show an alert view in your Viewcontroller.
-- using '+ (void)startWithCompletedHandler:(yp_flunecy_handler)handler' method, your can handle backtrace in the block.
-
-Installation
-==============
-
-### CocoaPods
 
 1. Add `pod 'YPAppMonitor'` to your Podfile.
 2. Run `pod install` or `pod update`.
-3. Import \<YPAppMonitor/YPAppMonitor.h\>.
-4. Add '[YPAppFluencyMonitor start]' in your code to moniting UI fluency.Also you can stop by using 'stop' menthod.
+3. `#import <YPAppMonitor/YPAppMonitor.h>`.
+
+
+
+In your project APPDelegate ,method didFinishLaunchingWithOption:
+
+``` objective-c
+YPAppMonitorConfiguration *config = [YPAppMonitorConfiguration new];
+config.useCrashMonitoring = YES;
+config.useFluencymonitoring = YES;
+config.reportServerBaseUrl = [NSURL URLWithString:@"http://127.0.0.1:8088/YPAppMonitor/"];
+[YPAppMonitor startWithConfiguration:config];
+```
+
 
 Requirements
 ==============
 This library requires `iOS 7.0+` and `Xcode 8.0+`.
+
+
+
+Component diagram
+
+==============
+
+
+
+
+
+
+Other
+
+==============
+
+The progress of delevepment work :
+
+1.YPAppMonitor framework for iOS,now is Release;
+
+2.YPAppMonitorrServer for node.js,now is developing;
+
+3.YPAppMonitorViewer for mac OS,now is developing;
