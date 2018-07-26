@@ -3,15 +3,11 @@
 This is an App fluency/crash monitor.it can update record to the specific server.
 
 
-
-Using CocoaPods
-
-==============
+# Using (CocoaPods)
 
 1. Add `pod 'YPAppMonitor'` to your Podfile.
 2. Run `pod install` or `pod update`.
 3. `#import <YPAppMonitor/YPAppMonitor.h>`.
-
 
 
 In your project APPDelegate ,method didFinishLaunchingWithOption:
@@ -24,30 +20,19 @@ config.reportServerBaseUrl = [NSURL URLWithString:@"http://127.0.0.1:8088/YPAppM
 [YPAppMonitor startWithConfiguration:config];
 ```
 
-
-Requirements
-==============
+# Requirements
 This library requires `iOS 7.0+` and `Xcode 8.0+`.
 
 
+# Component diagram
+<img src="https://raw.github.com/zhuyuping/YPAppMonitor/master/Demo/Snapshots/YPAPPMonitorComponent diagram.png" width="826"><br/>
 
-Component diagram
-
-==============
-
-
-
-
-
-
-Other
-
-==============
+# Other
 
 The progress of delevepment work :
 
-1.YPAppMonitor framework for iOS,now is Release;
+- YPAppMonitor framework for iOS,now is Release;
 
-2.YPAppMonitorrServer for node.js,now is developing;
+- YPAppMonitorrServer for node.js,now is developing;
 
-3.YPAppMonitorViewer for mac OS,now is developing;
+- YPAppMonitorViewer for mac OS,now is developing;
