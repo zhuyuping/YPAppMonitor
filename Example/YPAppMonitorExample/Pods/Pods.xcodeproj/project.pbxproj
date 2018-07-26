@@ -7,42 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		045E7A23F7FE7FC042215D3AF98867B7 /* YPReport.m in Sources */ = {isa = PBXBuildFile; fileRef = B558FBF63F85F2784A538FF896764DF8 /* YPReport.m */; };
-		0F112D53918068998A1F765E362B7411 /* YPReporterNetworkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 18138E8BC24D3620169FB792CF3D887B /* YPReporterNetworkOperation.m */; };
-		0FED29E52B1C51FA3495BD00B8D3CB74 /* YPHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 69127860D7C958C94F1C8C462F02AD9D /* YPHttpClient.m */; };
-		133C8B35F93F7BCCA63187A092B1FF8E /* YPMonitorReporter.h in Headers */ = {isa = PBXBuildFile; fileRef = 117B0DFF5337DF9B113D3227BC81590D /* YPMonitorReporter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		175EB648C14E9F5ABAA69271D63492F4 /* YPAppFluencyInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A3D1BFD5441C55CD0A148FE4A64ED09 /* YPAppFluencyInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		194E35E159A4E8D442F9756CC97C89C3 /* YPBacktraceLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 041C9D2B37959B1DA306A43C230350CB /* YPBacktraceLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		22E7F861C87A01842C347FB084D29A76 /* YPAppCrashInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C342B0691BBB58ACC734B3CB0953FFB8 /* YPAppCrashInfo.m */; };
-		23662F1FDA61CBB0BD43623C0BD5EA54 /* YPReporterNetworkOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 93CDA574A2604EB6E16E907CBE72DE63 /* YPReporterNetworkOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2C0061EA7709DD7264A161DF4B5141AF /* YPAppCrashInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 630E7660B4EB611618CC5B3EEB995D44 /* YPAppCrashInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		35F6B1B304490FC1AF42745D6F380BD9 /* YPDispatchQueuePool.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A81F48EC1A8535D504790CE4289B22C /* YPDispatchQueuePool.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4145914473F189E932F80FD54C2D870D /* YPBacktraceLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = FCACB1BB234A55192C0F2011F94A6A68 /* YPBacktraceLogger.m */; };
-		41594096810B245824F85A73CAB50C82 /* YPAppCrashMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = C6478F13C40A1873F841590E5D0EC552 /* YPAppCrashMonitor.m */; };
-		42172A6C5D675DA837DDFB09E77CC42D /* YPMonitorReporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2463D2A47CF6F7307BCF721397CEC697 /* YPMonitorReporter.m */; };
-		48BE1D225F5A703B85CE0A713F5C7D39 /* YPDispatchQueuePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 66C5C8CF21EC56E65D92C4D205051D6F /* YPDispatchQueuePool.m */; };
-		4B679193E1BAA7CFFF8E6D7789E6D19F /* YPCrashLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 2506CD7696FF95A8EE6ADC7AF6AC1700 /* YPCrashLogger.m */; };
-		5002D963ABC66832040945939135E65E /* YPAppFluencyInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 96B6A1AA450A3EC58442C3736398B456 /* YPAppFluencyInfo.m */; };
-		504A65AE5D4581BC919166BFCDFFED42 /* YPAppMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EB5FCFC1E6FDBF1716D286918ED6601 /* YPAppMonitor.m */; };
-		510C58061532F119D6A16739813B332C /* YPAppMonitor-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 286946DAFC246E512E97DA36769B5374 /* YPAppMonitor-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		54C32BC112CD2D8721C7BBF845C3B6AA /* Pods-YPAppMonitorExample-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 124806C9490F5C2A0B0834DED5C9D7C4 /* Pods-YPAppMonitorExample-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5CD41BCA8B9797B651B4915EC436D1E7 /* YPPersistency.h in Headers */ = {isa = PBXBuildFile; fileRef = BE6F20F940B6B8D08E408E6C62E9E715 /* YPPersistency.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		60BC29FF353DD8D143667F3F3B936D23 /* YPAppMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = FA367B96B20E03F7EF6206FDEDF8C426 /* YPAppMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		688726D6F9029E79883065B49C42C0EF /* YPAppFluencyMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B860AFF116109B5640A2E6B7E3DDCB5 /* YPAppFluencyMonitor.m */; };
-		7C3F1C3897511E6335FE04EE1867352C /* YPAppMonitor-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A757F55E22F4D89070200224EB69F09 /* YPAppMonitor-dummy.m */; };
-		85C9D65D0B64DFF5DB30C6B5EAB04132 /* YPCrashLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = F2564B09274F3E9D4C37D3F089E33E98 /* YPCrashLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8874155390492AF2550613DD2C43EC63 /* UIViewController+ZYPMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0527A377E71979C0B72C4F8D53AB1AE1 /* UIViewController+ZYPMonitor.m */; };
-		8B01D35B21457CD82BF3BCB3222F1D3A /* YPReport.h in Headers */ = {isa = PBXBuildFile; fileRef = F754B71026E1BA6DD11D5075FD0D26C8 /* YPReport.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		96FB64CE2933CC65F181B5B761AABD83 /* UIViewController+ZYPMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D8E48F1CF39D49B10E18BD54099795C /* UIViewController+ZYPMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		59770D5D490239B73EC2DAE0B4B946AB /* YPAppMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 2994A5047E52384031BC6D825D03EC47 /* YPAppMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A2BFC1FD4886BFCE6C2E653982701CF2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC2C02191C153C1554B35DEE8B2D09D4 /* UIKit.framework */; };
-		A32F00D9A5C9BE5B85053C4A1E157B8D /* YPAppCrashMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = DFA30E090CA02D3DC7BB066561649D04 /* YPAppCrashMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A4307FAAFCC91F9AB65C0A4EB9BDC491 /* YPHttpClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 005AA2713E4580FDBBF985763EEB9E02 /* YPHttpClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B38D920A681CCECD224D9BF2BCB1A1E9 /* YPAppFluencyMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = E4E972CA8266172AAD94641844764D71 /* YPAppFluencyMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF756B85FE7CAAA45D2837B39034AA78 /* YPAppMonitor-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 13C9CFBFE318DE355364593E39D4ADA5 /* YPAppMonitor-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C70EA0A2016C296D02ADB8E79F7A2767 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 908E902E026C5C22904CF9014A5604AD /* Foundation.framework */; };
-		D333FBCD243049E1DADD90AC7444335A /* YPPersistency.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E529F2CD42F445CD3D18740CE35DCBA /* YPPersistency.m */; };
-		D537C2146A934D3E1562AA048C4D4D18 /* YPAppInfoHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F9259AF2D117F9AC6BFECBDF1D8673 /* YPAppInfoHelper.m */; };
+		EF5B646318B68270C9556F950DF1704F /* YPAppMonitor-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D981EA957BDBECEF5BC2DF7C9DB4750 /* YPAppMonitor-dummy.m */; };
 		F04404CB2AE888E68778BCC8C420D5B3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 908E902E026C5C22904CF9014A5604AD /* Foundation.framework */; };
-		F4280BA6ABD8D3728CECFE8E9CA18E31 /* YPAppInfoHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = BAF90E53D8A92492934E161DF97132E9 /* YPAppInfoHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F0AE15DE298CB1874216F0D85FF4EBFE /* YPAppMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD334C3B1F8B99C51744319E312066C /* YPAppMonitor.m */; };
 		FE52EFBA801C89D8B8D0E32680D1C9E6 /* Pods-YPAppMonitorExample-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F15E20F19AE5C07A2138A674DCEC7319 /* Pods-YPAppMonitorExample-dummy.m */; };
 /* End PBXBuildFile section */
 
@@ -57,57 +29,29 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		005AA2713E4580FDBBF985763EEB9E02 /* YPHttpClient.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YPHttpClient.h; path = YPAppMonitor/Utility/YPHttpClient.h; sourceTree = "<group>"; };
-		041C9D2B37959B1DA306A43C230350CB /* YPBacktraceLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YPBacktraceLogger.h; path = YPAppMonitor/Utility/YPBacktraceLogger.h; sourceTree = "<group>"; };
-		0527A377E71979C0B72C4F8D53AB1AE1 /* UIViewController+ZYPMonitor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+ZYPMonitor.m"; path = "YPAppMonitor/Base/UIViewController+ZYPMonitor.m"; sourceTree = "<group>"; };
-		0EB5FCFC1E6FDBF1716D286918ED6601 /* YPAppMonitor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YPAppMonitor.m; path = YPAppMonitor/YPAppMonitor.m; sourceTree = "<group>"; };
 		105999B43EE2CE77147453009DFD8A61 /* Pods-YPAppMonitorExample.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-YPAppMonitorExample.modulemap"; sourceTree = "<group>"; };
-		117B0DFF5337DF9B113D3227BC81590D /* YPMonitorReporter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YPMonitorReporter.h; path = YPAppMonitor/Persistency/YPMonitorReporter.h; sourceTree = "<group>"; };
 		124806C9490F5C2A0B0834DED5C9D7C4 /* Pods-YPAppMonitorExample-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-YPAppMonitorExample-umbrella.h"; sourceTree = "<group>"; };
-		18138E8BC24D3620169FB792CF3D887B /* YPReporterNetworkOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YPReporterNetworkOperation.m; path = YPAppMonitor/Persistency/YPReporterNetworkOperation.m; sourceTree = "<group>"; };
+		13C9CFBFE318DE355364593E39D4ADA5 /* YPAppMonitor-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "YPAppMonitor-umbrella.h"; sourceTree = "<group>"; };
 		19AF97853B6C2DE015D2F67210811DE2 /* YPAppMonitor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = YPAppMonitor.framework; path = YPAppMonitor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2463D2A47CF6F7307BCF721397CEC697 /* YPMonitorReporter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YPMonitorReporter.m; path = YPAppMonitor/Persistency/YPMonitorReporter.m; sourceTree = "<group>"; };
-		2506CD7696FF95A8EE6ADC7AF6AC1700 /* YPCrashLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YPCrashLogger.m; path = YPAppMonitor/Utility/YPCrashLogger.m; sourceTree = "<group>"; };
+		1CD334C3B1F8B99C51744319E312066C /* YPAppMonitor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YPAppMonitor.m; path = YPAppMonitor/YPAppMonitor.m; sourceTree = "<group>"; };
+		1FC8589F9B9BE68012D85936649B0651 /* YPAppMonitor-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "YPAppMonitor-prefix.pch"; sourceTree = "<group>"; };
 		25A9D6AC1A4C3AF825CF9A716881BCDA /* Pods-YPAppMonitorExample-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-YPAppMonitorExample-frameworks.sh"; sourceTree = "<group>"; };
-		286946DAFC246E512E97DA36769B5374 /* YPAppMonitor-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "YPAppMonitor-umbrella.h"; sourceTree = "<group>"; };
-		2A81F48EC1A8535D504790CE4289B22C /* YPDispatchQueuePool.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YPDispatchQueuePool.h; path = YPAppMonitor/Utility/YPDispatchQueuePool.h; sourceTree = "<group>"; };
-		3D8E48F1CF39D49B10E18BD54099795C /* UIViewController+ZYPMonitor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIViewController+ZYPMonitor.h"; path = "YPAppMonitor/Base/UIViewController+ZYPMonitor.h"; sourceTree = "<group>"; };
-		486844F9B6ADD128B76B27F279B94B00 /* YPAppMonitor.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = YPAppMonitor.xcconfig; sourceTree = "<group>"; };
-		5A3D1BFD5441C55CD0A148FE4A64ED09 /* YPAppFluencyInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YPAppFluencyInfo.h; path = YPAppMonitor/Model/YPAppFluencyInfo.h; sourceTree = "<group>"; };
-		5E529F2CD42F445CD3D18740CE35DCBA /* YPPersistency.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YPPersistency.m; path = YPAppMonitor/Persistency/YPPersistency.m; sourceTree = "<group>"; };
-		630E7660B4EB611618CC5B3EEB995D44 /* YPAppCrashInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YPAppCrashInfo.h; path = YPAppMonitor/Model/YPAppCrashInfo.h; sourceTree = "<group>"; };
-		66C5C8CF21EC56E65D92C4D205051D6F /* YPDispatchQueuePool.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YPDispatchQueuePool.m; path = YPAppMonitor/Utility/YPDispatchQueuePool.m; sourceTree = "<group>"; };
-		69127860D7C958C94F1C8C462F02AD9D /* YPHttpClient.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YPHttpClient.m; path = YPAppMonitor/Utility/YPHttpClient.m; sourceTree = "<group>"; };
-		6B860AFF116109B5640A2E6B7E3DDCB5 /* YPAppFluencyMonitor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YPAppFluencyMonitor.m; path = YPAppMonitor/AppFluency/YPAppFluencyMonitor.m; sourceTree = "<group>"; };
-		74F9259AF2D117F9AC6BFECBDF1D8673 /* YPAppInfoHelper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YPAppInfoHelper.m; path = YPAppMonitor/Model/YPAppInfoHelper.m; sourceTree = "<group>"; };
-		7661C569B9988BBD44C34B636756474C /* YPAppMonitor-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "YPAppMonitor-prefix.pch"; sourceTree = "<group>"; };
+		2994A5047E52384031BC6D825D03EC47 /* YPAppMonitor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YPAppMonitor.h; path = YPAppMonitor/YPAppMonitor.h; sourceTree = "<group>"; };
+		504B147FCAE21A6F79E2BFAAED94B99F /* YPAppMonitor.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = YPAppMonitor.modulemap; sourceTree = "<group>"; };
+		6D981EA957BDBECEF5BC2DF7C9DB4750 /* YPAppMonitor-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "YPAppMonitor-dummy.m"; sourceTree = "<group>"; };
 		781A7866F366958D25C8B97793AD2B54 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8A757F55E22F4D89070200224EB69F09 /* YPAppMonitor-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "YPAppMonitor-dummy.m"; sourceTree = "<group>"; };
 		908E902E026C5C22904CF9014A5604AD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		920C6E714E8D5B99FA756D7B0C6F9B5A /* YPAppMonitor.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = YPAppMonitor.modulemap; sourceTree = "<group>"; };
-		92555C08B4B78F76C4D511B76A685335 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9336B095AB6ED7FA2D1FDC88C7970C6B /* Pods-YPAppMonitorExample-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-YPAppMonitorExample-acknowledgements.markdown"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		93CDA574A2604EB6E16E907CBE72DE63 /* YPReporterNetworkOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YPReporterNetworkOperation.h; path = YPAppMonitor/Persistency/YPReporterNetworkOperation.h; sourceTree = "<group>"; };
-		96B6A1AA450A3EC58442C3736398B456 /* YPAppFluencyInfo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YPAppFluencyInfo.m; path = YPAppMonitor/Model/YPAppFluencyInfo.m; sourceTree = "<group>"; };
 		B26A213DC6334E0D8E2C47411D35D901 /* Pods-YPAppMonitorExample-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-YPAppMonitorExample-resources.sh"; sourceTree = "<group>"; };
-		B558FBF63F85F2784A538FF896764DF8 /* YPReport.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YPReport.m; path = YPAppMonitor/Model/YPReport.m; sourceTree = "<group>"; };
-		BAF90E53D8A92492934E161DF97132E9 /* YPAppInfoHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YPAppInfoHelper.h; path = YPAppMonitor/Model/YPAppInfoHelper.h; sourceTree = "<group>"; };
+		B388EACEE20AF050F48489164C25FD11 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B600867C0062AE1A1D6F100309C6BD22 /* YPAppMonitor.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = YPAppMonitor.xcconfig; sourceTree = "<group>"; };
 		BC2C02191C153C1554B35DEE8B2D09D4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		BD79DE08900973668B82E1627499E8CB /* Pods-YPAppMonitorExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-YPAppMonitorExample.debug.xcconfig"; sourceTree = "<group>"; };
-		BE6F20F940B6B8D08E408E6C62E9E715 /* YPPersistency.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YPPersistency.h; path = YPAppMonitor/Persistency/YPPersistency.h; sourceTree = "<group>"; };
-		C342B0691BBB58ACC734B3CB0953FFB8 /* YPAppCrashInfo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YPAppCrashInfo.m; path = YPAppMonitor/Model/YPAppCrashInfo.m; sourceTree = "<group>"; };
-		C6478F13C40A1873F841590E5D0EC552 /* YPAppCrashMonitor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YPAppCrashMonitor.m; path = YPAppMonitor/AppCrash/YPAppCrashMonitor.m; sourceTree = "<group>"; };
 		CC5A2B34DFB7853FC748F2FA2872197F /* Pods-YPAppMonitorExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-YPAppMonitorExample.release.xcconfig"; sourceTree = "<group>"; };
 		DCC18BA8DE198514441627FB3F7467A9 /* Pods-YPAppMonitorExample-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-YPAppMonitorExample-acknowledgements.plist"; sourceTree = "<group>"; };
-		DFA30E090CA02D3DC7BB066561649D04 /* YPAppCrashMonitor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YPAppCrashMonitor.h; path = YPAppMonitor/AppCrash/YPAppCrashMonitor.h; sourceTree = "<group>"; };
-		E4E972CA8266172AAD94641844764D71 /* YPAppFluencyMonitor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YPAppFluencyMonitor.h; path = YPAppMonitor/AppFluency/YPAppFluencyMonitor.h; sourceTree = "<group>"; };
 		F15E20F19AE5C07A2138A674DCEC7319 /* Pods-YPAppMonitorExample-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-YPAppMonitorExample-dummy.m"; sourceTree = "<group>"; };
-		F2564B09274F3E9D4C37D3F089E33E98 /* YPCrashLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YPCrashLogger.h; path = YPAppMonitor/Utility/YPCrashLogger.h; sourceTree = "<group>"; };
-		F754B71026E1BA6DD11D5075FD0D26C8 /* YPReport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YPReport.h; path = YPAppMonitor/Model/YPReport.h; sourceTree = "<group>"; };
-		FA367B96B20E03F7EF6206FDEDF8C426 /* YPAppMonitor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YPAppMonitor.h; path = YPAppMonitor/YPAppMonitor.h; sourceTree = "<group>"; };
 		FC73ED4F342EE49AA081B3D0432E3DC4 /* Pods_YPAppMonitorExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_YPAppMonitorExample.framework; path = "Pods-YPAppMonitorExample.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		FCACB1BB234A55192C0F2011F94A6A68 /* YPBacktraceLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YPBacktraceLogger.m; path = YPAppMonitor/Utility/YPBacktraceLogger.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +102,14 @@
 			path = "Target Support Files/Pods-YPAppMonitorExample";
 			sourceTree = "<group>";
 		};
+		1D0DF581B9575A25A5194C4234EFCDF7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FD8C30B3A8A9D8421CC91AB145B49638 /* YPAppMonitor */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		3AC8EF5C5DDB98A5BA3784FD650E6B35 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,15 +126,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		7A3D0C59D8B877E62F6D4A496C00E3EA /* Support Files */ = {
+		6FC4E1569EFDD181BA92C6854A4525B8 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				92555C08B4B78F76C4D511B76A685335 /* Info.plist */,
-				920C6E714E8D5B99FA756D7B0C6F9B5A /* YPAppMonitor.modulemap */,
-				486844F9B6ADD128B76B27F279B94B00 /* YPAppMonitor.xcconfig */,
-				8A757F55E22F4D89070200224EB69F09 /* YPAppMonitor-dummy.m */,
-				7661C569B9988BBD44C34B636756474C /* YPAppMonitor-prefix.pch */,
-				286946DAFC246E512E97DA36769B5374 /* YPAppMonitor-umbrella.h */,
+				B388EACEE20AF050F48489164C25FD11 /* Info.plist */,
+				504B147FCAE21A6F79E2BFAAED94B99F /* YPAppMonitor.modulemap */,
+				B600867C0062AE1A1D6F100309C6BD22 /* YPAppMonitor.xcconfig */,
+				6D981EA957BDBECEF5BC2DF7C9DB4750 /* YPAppMonitor-dummy.m */,
+				1FC8589F9B9BE68012D85936649B0651 /* YPAppMonitor-prefix.pch */,
+				13C9CFBFE318DE355364593E39D4ADA5 /* YPAppMonitor-umbrella.h */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/YPAppMonitor";
@@ -193,7 +145,7 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				433CD3331B6C3787F473C941B61FC68F /* Frameworks */,
-				D1CF3E427227ED7B7FB3B644CEA94A60 /* Pods */,
+				1D0DF581B9575A25A5194C4234EFCDF7 /* Pods */,
 				BD0A537E0EBAA0BDF890A88ED40DC83B /* Products */,
 				3AC8EF5C5DDB98A5BA3784FD650E6B35 /* Targets Support Files */,
 			);
@@ -208,48 +160,12 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D1CF3E427227ED7B7FB3B644CEA94A60 /* Pods */ = {
+		FD8C30B3A8A9D8421CC91AB145B49638 /* YPAppMonitor */ = {
 			isa = PBXGroup;
 			children = (
-				D54DEFB6AF60B485B3F2218F2BEC03AD /* YPAppMonitor */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		D54DEFB6AF60B485B3F2218F2BEC03AD /* YPAppMonitor */ = {
-			isa = PBXGroup;
-			children = (
-				3D8E48F1CF39D49B10E18BD54099795C /* UIViewController+ZYPMonitor.h */,
-				0527A377E71979C0B72C4F8D53AB1AE1 /* UIViewController+ZYPMonitor.m */,
-				630E7660B4EB611618CC5B3EEB995D44 /* YPAppCrashInfo.h */,
-				C342B0691BBB58ACC734B3CB0953FFB8 /* YPAppCrashInfo.m */,
-				DFA30E090CA02D3DC7BB066561649D04 /* YPAppCrashMonitor.h */,
-				C6478F13C40A1873F841590E5D0EC552 /* YPAppCrashMonitor.m */,
-				5A3D1BFD5441C55CD0A148FE4A64ED09 /* YPAppFluencyInfo.h */,
-				96B6A1AA450A3EC58442C3736398B456 /* YPAppFluencyInfo.m */,
-				E4E972CA8266172AAD94641844764D71 /* YPAppFluencyMonitor.h */,
-				6B860AFF116109B5640A2E6B7E3DDCB5 /* YPAppFluencyMonitor.m */,
-				BAF90E53D8A92492934E161DF97132E9 /* YPAppInfoHelper.h */,
-				74F9259AF2D117F9AC6BFECBDF1D8673 /* YPAppInfoHelper.m */,
-				FA367B96B20E03F7EF6206FDEDF8C426 /* YPAppMonitor.h */,
-				0EB5FCFC1E6FDBF1716D286918ED6601 /* YPAppMonitor.m */,
-				041C9D2B37959B1DA306A43C230350CB /* YPBacktraceLogger.h */,
-				FCACB1BB234A55192C0F2011F94A6A68 /* YPBacktraceLogger.m */,
-				F2564B09274F3E9D4C37D3F089E33E98 /* YPCrashLogger.h */,
-				2506CD7696FF95A8EE6ADC7AF6AC1700 /* YPCrashLogger.m */,
-				2A81F48EC1A8535D504790CE4289B22C /* YPDispatchQueuePool.h */,
-				66C5C8CF21EC56E65D92C4D205051D6F /* YPDispatchQueuePool.m */,
-				005AA2713E4580FDBBF985763EEB9E02 /* YPHttpClient.h */,
-				69127860D7C958C94F1C8C462F02AD9D /* YPHttpClient.m */,
-				117B0DFF5337DF9B113D3227BC81590D /* YPMonitorReporter.h */,
-				2463D2A47CF6F7307BCF721397CEC697 /* YPMonitorReporter.m */,
-				BE6F20F940B6B8D08E408E6C62E9E715 /* YPPersistency.h */,
-				5E529F2CD42F445CD3D18740CE35DCBA /* YPPersistency.m */,
-				F754B71026E1BA6DD11D5075FD0D26C8 /* YPReport.h */,
-				B558FBF63F85F2784A538FF896764DF8 /* YPReport.m */,
-				93CDA574A2604EB6E16E907CBE72DE63 /* YPReporterNetworkOperation.h */,
-				18138E8BC24D3620169FB792CF3D887B /* YPReporterNetworkOperation.m */,
-				7A3D0C59D8B877E62F6D4A496C00E3EA /* Support Files */,
+				2994A5047E52384031BC6D825D03EC47 /* YPAppMonitor.h */,
+				1CD334C3B1F8B99C51744319E312066C /* YPAppMonitor.m */,
+				6FC4E1569EFDD181BA92C6854A4525B8 /* Support Files */,
 			);
 			name = YPAppMonitor;
 			path = YPAppMonitor;
@@ -258,34 +174,20 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		40C6B6FC7F7C7AF37B60BFD0BD1DCA18 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF756B85FE7CAAA45D2837B39034AA78 /* YPAppMonitor-umbrella.h in Headers */,
+				59770D5D490239B73EC2DAE0B4B946AB /* YPAppMonitor.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B6DAF2C842243A05E427DD195D56E03B /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				54C32BC112CD2D8721C7BBF845C3B6AA /* Pods-YPAppMonitorExample-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BDE61FC736D48FF3C60CB7B628D7CF82 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				96FB64CE2933CC65F181B5B761AABD83 /* UIViewController+ZYPMonitor.h in Headers */,
-				2C0061EA7709DD7264A161DF4B5141AF /* YPAppCrashInfo.h in Headers */,
-				A32F00D9A5C9BE5B85053C4A1E157B8D /* YPAppCrashMonitor.h in Headers */,
-				175EB648C14E9F5ABAA69271D63492F4 /* YPAppFluencyInfo.h in Headers */,
-				B38D920A681CCECD224D9BF2BCB1A1E9 /* YPAppFluencyMonitor.h in Headers */,
-				F4280BA6ABD8D3728CECFE8E9CA18E31 /* YPAppInfoHelper.h in Headers */,
-				510C58061532F119D6A16739813B332C /* YPAppMonitor-umbrella.h in Headers */,
-				60BC29FF353DD8D143667F3F3B936D23 /* YPAppMonitor.h in Headers */,
-				194E35E159A4E8D442F9756CC97C89C3 /* YPBacktraceLogger.h in Headers */,
-				85C9D65D0B64DFF5DB30C6B5EAB04132 /* YPCrashLogger.h in Headers */,
-				35F6B1B304490FC1AF42745D6F380BD9 /* YPDispatchQueuePool.h in Headers */,
-				A4307FAAFCC91F9AB65C0A4EB9BDC491 /* YPHttpClient.h in Headers */,
-				133C8B35F93F7BCCA63187A092B1FF8E /* YPMonitorReporter.h in Headers */,
-				5CD41BCA8B9797B651B4915EC436D1E7 /* YPPersistency.h in Headers */,
-				8B01D35B21457CD82BF3BCB3222F1D3A /* YPReport.h in Headers */,
-				23662F1FDA61CBB0BD43623C0BD5EA54 /* YPReporterNetworkOperation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,9 +198,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1FE85211C7CB0072D4F13CBAB5847CBA /* Build configuration list for PBXNativeTarget "YPAppMonitor" */;
 			buildPhases = (
-				D38DE3CB62BB74CEBDD7FFDBAED2C068 /* Sources */,
+				D608C853FB91567CAF9FE0180DDDA664 /* Sources */,
 				48590022E8AFD2C87504F4964CBD94A8 /* Frameworks */,
-				BDE61FC736D48FF3C60CB7B628D7CF82 /* Headers */,
+				40C6B6FC7F7C7AF37B60BFD0BD1DCA18 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -363,26 +265,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D38DE3CB62BB74CEBDD7FFDBAED2C068 /* Sources */ = {
+		D608C853FB91567CAF9FE0180DDDA664 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8874155390492AF2550613DD2C43EC63 /* UIViewController+ZYPMonitor.m in Sources */,
-				22E7F861C87A01842C347FB084D29A76 /* YPAppCrashInfo.m in Sources */,
-				41594096810B245824F85A73CAB50C82 /* YPAppCrashMonitor.m in Sources */,
-				5002D963ABC66832040945939135E65E /* YPAppFluencyInfo.m in Sources */,
-				688726D6F9029E79883065B49C42C0EF /* YPAppFluencyMonitor.m in Sources */,
-				D537C2146A934D3E1562AA048C4D4D18 /* YPAppInfoHelper.m in Sources */,
-				7C3F1C3897511E6335FE04EE1867352C /* YPAppMonitor-dummy.m in Sources */,
-				504A65AE5D4581BC919166BFCDFFED42 /* YPAppMonitor.m in Sources */,
-				4145914473F189E932F80FD54C2D870D /* YPBacktraceLogger.m in Sources */,
-				4B679193E1BAA7CFFF8E6D7789E6D19F /* YPCrashLogger.m in Sources */,
-				48BE1D225F5A703B85CE0A713F5C7D39 /* YPDispatchQueuePool.m in Sources */,
-				0FED29E52B1C51FA3495BD00B8D3CB74 /* YPHttpClient.m in Sources */,
-				42172A6C5D675DA837DDFB09E77CC42D /* YPMonitorReporter.m in Sources */,
-				D333FBCD243049E1DADD90AC7444335A /* YPPersistency.m in Sources */,
-				045E7A23F7FE7FC042215D3AF98867B7 /* YPReport.m in Sources */,
-				0F112D53918068998A1F765E362B7411 /* YPReporterNetworkOperation.m in Sources */,
+				EF5B646318B68270C9556F950DF1704F /* YPAppMonitor-dummy.m in Sources */,
+				F0AE15DE298CB1874216F0D85FF4EBFE /* YPAppMonitor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,7 +351,7 @@
 		};
 		23665BA7E2C7BD92DDA9433AE7D35E12 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 486844F9B6ADD128B76B27F279B94B00 /* YPAppMonitor.xcconfig */;
+			baseConfigurationReference = B600867C0062AE1A1D6F100309C6BD22 /* YPAppMonitor.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -497,7 +385,7 @@
 		};
 		972F17685A003F973D41F6221DFBD1DC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 486844F9B6ADD128B76B27F279B94B00 /* YPAppMonitor.xcconfig */;
+			baseConfigurationReference = B600867C0062AE1A1D6F100309C6BD22 /* YPAppMonitor.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
