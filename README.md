@@ -25,7 +25,7 @@ This library requires `iOS 7.0+` and `Xcode 8.0+`.
 
 
 # Component diagram
-<img src="https://raw.github.com/zhuyuping/YPAppMonitor/master/Demo/Snapshots/YPAPPMonitorComponent diagram.png" width="826"><br/>
+<img src="https://github.com/zhuyuping/YPAppMonitor/blob/master/Demo/YPAppMonitorDemo/Snapshots/YPAPPMonitorComponent%20diagram.png" width="826"><br/>
 
 # Other
 
