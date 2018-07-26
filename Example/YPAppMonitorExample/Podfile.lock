@@ -10,11 +10,11 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   YPAppMonitor:
-    :commit: 7f32d288127e6a7b4fe225ad87a283ae3cb240bf
+    :commit: 31a30161d73350c60a4d0af2b3849097c2670533
     :git: https://github.com/zhuyuping/YPAppMonitor.git
 
 SPEC CHECKSUMS:
-  YPAppMonitor: 9199e81fd0c9720f562fea619c0dae29f27d4a99
+  YPAppMonitor: efee8b117fff49158bf47a39ea585c2a62f7203a
 
 PODFILE CHECKSUM: 4869598b670ad8708e011eb693d047c42c6d94dc
 

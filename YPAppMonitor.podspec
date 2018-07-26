@@ -6,7 +6,7 @@ s.summary      = "App监控" # 项目简介
 
 s.homepage     = "https://github.com/zhuyuping/YPAppMonitor" # 仓库的主页
 s.source       = { :git => "https://github.com/zhuyuping/YPAppMonitor.git", :tag => "#{s.version}" }#你的仓库地址，不能用SSH地址
-s.source_files = "YPAppMonitor/**/*"
+s.source_files = "YPAppMonitor/{AppCrash,AppFluency}/*"
 s.public_header_files = 'YPAppMonitor/YPAppMonitor.h'
 s.requires_arc = true # 是否启用ARC
 s.platform     = :ios, "8.0" #平台及支持的最低版本
