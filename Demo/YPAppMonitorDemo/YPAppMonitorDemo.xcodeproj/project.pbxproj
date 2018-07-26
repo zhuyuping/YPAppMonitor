@@ -36,7 +36,6 @@
 		1CA991E82109A49200B4D58A /* NSString+YP_Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CA991E02109A49200B4D58A /* NSString+YP_Extension.m */; };
 		1CA991E92109A49200B4D58A /* NSDate+YP_Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CA991E32109A49200B4D58A /* NSDate+YP_Extension.m */; };
 		1CA991EA2109A49200B4D58A /* UIApplication+YP_Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CA991E42109A49200B4D58A /* UIApplication+YP_Extension.m */; };
-		1CA991EE2109A62400B4D58A /* YPAppMonitor.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 1CA991ED2109A62300B4D58A /* YPAppMonitor.podspec */; };
 		1CAF03B620D3B12C0097730E /* YPReport.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CAF03B520D3B12C0097730E /* YPReport.m */; };
 /* End PBXBuildFile section */
 
@@ -98,7 +97,6 @@
 		1CA991E22109A49200B4D58A /* YP_Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YP_Extension.h; sourceTree = "<group>"; };
 		1CA991E32109A49200B4D58A /* NSDate+YP_Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+YP_Extension.m"; sourceTree = "<group>"; };
 		1CA991E42109A49200B4D58A /* UIApplication+YP_Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+YP_Extension.m"; sourceTree = "<group>"; };
-		1CA991ED2109A62300B4D58A /* YPAppMonitor.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = YPAppMonitor.podspec; path = ../../YPAppMonitor.podspec; sourceTree = "<group>"; };
 		1CAF03B420D3B12C0097730E /* YPReport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YPReport.h; sourceTree = "<group>"; };
 		1CAF03B520D3B12C0097730E /* YPReport.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YPReport.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -130,7 +128,6 @@
 		1C99004220BE70F000B8BAC5 = {
 			isa = PBXGroup;
 			children = (
-				1CA991ED2109A62300B4D58A /* YPAppMonitor.podspec */,
 				1C99004D20BE70F000B8BAC5 /* YPAppMonitorDemo */,
 				1C99006420BE732300B8BAC5 /* YPAppMonitor */,
 				1CA991D72109A49200B4D58A /* YPKit */,
@@ -329,7 +326,6 @@
 			files = (
 				1C99005B20BE70F000B8BAC5 /* LaunchScreen.storyboard in Resources */,
 				1C99005820BE70F000B8BAC5 /* Assets.xcassets in Resources */,
-				1CA991EE2109A62400B4D58A /* YPAppMonitor.podspec in Resources */,
 				1C99005620BE70F000B8BAC5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
