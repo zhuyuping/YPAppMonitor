@@ -28,6 +28,7 @@
     config.useFluencymonitoring = YES;
     config.reportServerBaseUrl = [NSURL URLWithString:@"http://127.0.0.1:8088/YPAppMonitor/"];
     [YPAppMonitor startWithConfiguration:config];
+
 }
 
 - (void)didReceiveMemoryWarning {
