@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1C14D5E820F49C5B00A8C811 /* YPAppFluencyInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C14D5E720F49C5B00A8C811 /* YPAppFluencyInfo.m */; };
 		1C53890220FF33CC0004C5FE /* YPAppInfoHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C53890120FF33CC0004C5FE /* YPAppInfoHelper.m */; };
+		1C53CF4E2121169F007F0B8B /* UIView+YP_Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C53CF4D2121169F007F0B8B /* UIView+YP_Extension.m */; };
 		1C69650220D236AA00B183F7 /* YPPersistency.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C69650120D236AA00B183F7 /* YPPersistency.m */; };
 		1C69650520D2376800B183F7 /* YPMonitorReporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C69650420D2376800B183F7 /* YPMonitorReporter.m */; };
 		1C69651120D26DBB00B183F7 /* YPAppMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C69651020D26DBB00B183F7 /* YPAppMonitor.m */; };
@@ -38,6 +39,7 @@
 		1CA991EA2109A49200B4D58A /* UIApplication+YP_Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CA991E42109A49200B4D58A /* UIApplication+YP_Extension.m */; };
 		1CA991EE2109A62400B4D58A /* YPAppMonitor.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 1CA991ED2109A62300B4D58A /* YPAppMonitor.podspec */; };
 		1CAF03B620D3B12C0097730E /* YPReport.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CAF03B520D3B12C0097730E /* YPReport.m */; };
+		1CB3E33D2123F1F2001A593F /* NSFileManager+YP_Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB3E33C2123F1F2001A593F /* NSFileManager+YP_Extension.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +47,8 @@
 		1C14D5E720F49C5B00A8C811 /* YPAppFluencyInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YPAppFluencyInfo.m; sourceTree = "<group>"; };
 		1C53890020FF33CC0004C5FE /* YPAppInfoHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YPAppInfoHelper.h; sourceTree = "<group>"; };
 		1C53890120FF33CC0004C5FE /* YPAppInfoHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YPAppInfoHelper.m; sourceTree = "<group>"; };
+		1C53CF4C2121169F007F0B8B /* UIView+YP_Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+YP_Extension.h"; sourceTree = "<group>"; };
+		1C53CF4D2121169F007F0B8B /* UIView+YP_Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+YP_Extension.m"; sourceTree = "<group>"; };
 		1C69650020D236AA00B183F7 /* YPPersistency.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YPPersistency.h; sourceTree = "<group>"; };
 		1C69650120D236AA00B183F7 /* YPPersistency.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YPPersistency.m; sourceTree = "<group>"; };
 		1C69650320D2376800B183F7 /* YPMonitorReporter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YPMonitorReporter.h; sourceTree = "<group>"; };
@@ -101,6 +105,8 @@
 		1CA991ED2109A62300B4D58A /* YPAppMonitor.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = YPAppMonitor.podspec; path = ../../YPAppMonitor.podspec; sourceTree = "<group>"; };
 		1CAF03B420D3B12C0097730E /* YPReport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YPReport.h; sourceTree = "<group>"; };
 		1CAF03B520D3B12C0097730E /* YPReport.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YPReport.m; sourceTree = "<group>"; };
+		1CB3E33B2123F1F2001A593F /* NSFileManager+YP_Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+YP_Extension.h"; sourceTree = "<group>"; };
+		1CB3E33C2123F1F2001A593F /* NSFileManager+YP_Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+YP_Extension.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -252,19 +258,23 @@
 		1CA991D72109A49200B4D58A /* YPKit */ = {
 			isa = PBXGroup;
 			children = (
+				1CA991E22109A49200B4D58A /* YP_Extension.h */,
+				1C53CF4C2121169F007F0B8B /* UIView+YP_Extension.h */,
+				1C53CF4D2121169F007F0B8B /* UIView+YP_Extension.m */,
 				1CA991D82109A49200B4D58A /* NSString+YP_Extension.h */,
-				1CA991D92109A49200B4D58A /* UIDevice+YP_Extension.m */,
+				1CA991E02109A49200B4D58A /* NSString+YP_Extension.m */,
 				1CA991DA2109A49200B4D58A /* UIScreen+YP_Extension.h */,
-				1CA991DB2109A49200B4D58A /* NSDictionary+YP_Extension.m */,
-				1CA991DC2109A49200B4D58A /* UIApplication+YP_Extension.h */,
-				1CA991DD2109A49200B4D58A /* NSDate+YP_Extension.h */,
 				1CA991DE2109A49200B4D58A /* UIScreen+YP_Extension.m */,
 				1CA991DF2109A49200B4D58A /* UIDevice+YP_Extension.h */,
-				1CA991E02109A49200B4D58A /* NSString+YP_Extension.m */,
-				1CA991E12109A49200B4D58A /* NSDictionary+YP_Extension.h */,
-				1CA991E22109A49200B4D58A /* YP_Extension.h */,
+				1CA991D92109A49200B4D58A /* UIDevice+YP_Extension.m */,
+				1CA991DD2109A49200B4D58A /* NSDate+YP_Extension.h */,
 				1CA991E32109A49200B4D58A /* NSDate+YP_Extension.m */,
+				1CA991E12109A49200B4D58A /* NSDictionary+YP_Extension.h */,
+				1CA991DB2109A49200B4D58A /* NSDictionary+YP_Extension.m */,
+				1CA991DC2109A49200B4D58A /* UIApplication+YP_Extension.h */,
 				1CA991E42109A49200B4D58A /* UIApplication+YP_Extension.m */,
+				1CB3E33B2123F1F2001A593F /* NSFileManager+YP_Extension.h */,
+				1CB3E33C2123F1F2001A593F /* NSFileManager+YP_Extension.m */,
 			);
 			name = YPKit;
 			path = ../../YPAppMonitor/YPKit;
@@ -342,6 +352,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1CA991E52109A49200B4D58A /* UIDevice+YP_Extension.m in Sources */,
+				1C53CF4E2121169F007F0B8B /* UIView+YP_Extension.m in Sources */,
 				1C69650220D236AA00B183F7 /* YPPersistency.m in Sources */,
 				1C99007C20BE732300B8BAC5 /* YPDispatchQueuePool.m in Sources */,
 				1CA991E92109A49200B4D58A /* NSDate+YP_Extension.m in Sources */,
@@ -356,6 +367,7 @@
 				1C69651120D26DBB00B183F7 /* YPAppMonitor.m in Sources */,
 				1C99008620BE743300B8BAC5 /* FluencyTestVC.m in Sources */,
 				1C99007920BE732300B8BAC5 /* YPAppCrashInfo.m in Sources */,
+				1CB3E33D2123F1F2001A593F /* NSFileManager+YP_Extension.m in Sources */,
 				1C69651420D28D8F00B183F7 /* YPHttpClient.m in Sources */,
 				1C99007A20BE732300B8BAC5 /* YPAppCrashMonitor.m in Sources */,
 				1C99005E20BE70F100B8BAC5 /* main.m in Sources */,

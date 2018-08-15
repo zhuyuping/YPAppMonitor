@@ -11,6 +11,7 @@
 #import "YPPersistency.h"
 #import "YPReporterNetworkOperation.h"
 #import "YPReport.h"
+#import "YP_Extension.h"
 
 const int  __updateSessionPeriod = 8;
 const char *__queue_name = "com.YPAppMonitor.DataOperationQueue";
@@ -47,9 +48,11 @@ dispatch_queue_t __MonitorReporterOperationQueue;
     _YP_reporterNetworkOperation_setBaseUrl(reportUrl.absoluteString);
 }
 
-- (void)addReport:(YPReport *)report {
+- (void)addReport:(YPReport *)report shotData:(NSData *)shotData terminalLogData:(NSData *)logData {
     dispatch_async(__MonitorReporterOperationQueue, ^{
-        [[YPPersistency sharedInstance] addToQueue:report];
+        [[YPPersistency sharedInstance] addReport:report];
+        [[YPPersistency sharedInstance] addShot:shotData name:[report.identifier stringByAppendingString:@".png"]];
+        [[YPPersistency sharedInstance] addTerminalLog:logData name:[report.identifier stringByAppendingString:@".log"]];
     });
 }
 
@@ -66,8 +69,10 @@ dispatch_queue_t __MonitorReporterOperationQueue;
 
 - (void)suspend {
     isSuspended = YES;
-    [[YPPersistency sharedInstance] saveToFileWithType:YPReportTypeFluency];
-    [[YPPersistency sharedInstance] saveToFileWithType:YPReportTypeCrash];
+    [[YPPersistency sharedInstance] saveReportToFileWithType:YPReportTypeFluency];
+    [[YPPersistency sharedInstance] saveReportToFileWithType:YPReportTypeCrash];
+    [[YPPersistency sharedInstance] saveShotToFile];
+    [[YPPersistency sharedInstance] saveTerminalLogToFile];
 }
 
 - (void)onTimer:(NSTimer *)timer {
@@ -78,8 +83,10 @@ dispatch_queue_t __MonitorReporterOperationQueue;
 - (void)uploadTask {
     NSArray *someFluencyReports = [[YPPersistency sharedInstance] someReportsWithType:YPReportTypeFluency];
     NSArray *someCrashReports = [[YPPersistency sharedInstance] someReportsWithType:YPReportTypeCrash];
+    NSArray *someShotNames = [[YPPersistency sharedInstance] someShotNames];
     if (someFluencyReports.count > 0) { [self sendWithReports:someFluencyReports]; }
     if (someCrashReports.count > 0) { [self sendWithReports:someCrashReports]; }
+    if (someShotNames.count > 0) { [self sendWithShotNames:someShotNames]; }
 }
 
 - (void)sendWithReports:(NSArray <YPReport *>*)reports {
@@ -91,7 +98,7 @@ dispatch_queue_t __MonitorReporterOperationQueue;
                 [[YPPersistency sharedInstance] removeReports:reports];
             }
             else {
-                [[YPPersistency sharedInstance] saveToFileWithType:report.type];
+                [[YPPersistency sharedInstance] saveReportToFileWithType:report.type];
             }
         }];
     }
@@ -101,10 +108,28 @@ dispatch_queue_t __MonitorReporterOperationQueue;
                 [[YPPersistency sharedInstance] removeReports:reports];
             }
             else {
-                [[YPPersistency sharedInstance] saveToFileWithType:report.type];
+                [[YPPersistency sharedInstance] saveReportToFileWithType:report.type];
             }
         }];
     }
+}
+
+- (void)sendWithShotNames:(NSArray <NSString *>*)names {
+    NSMutableArray <NSURL *>*urls = @[].mutableCopy;
+    for (NSString *name in names) {
+        NSURL *url = [YPPersistency urlForScreenShotWithName:name];
+        [urls addObject:url];
+    }
+    [YPReporterNetworkOperation uploadImagePngWithNames:names
+                                               fileUrls:urls
+                                       completedHandler:^(id msg, NSError *error) {
+                                           if (!error) {
+                                               [[YPPersistency sharedInstance] removeShotWithNames:names];
+                                           }
+                                           else {
+                                               [[YPPersistency sharedInstance] saveShotToFile];
+                                           }
+                                       }];
 }
 
 - (NSArray <NSString *>*)stringArrayFromReportArray:(NSArray <YPReport *>*)reportArray {

@@ -14,7 +14,9 @@
 
 + (instancetype)sharedInstance ;
 - (void)configReportUrl:(NSURL *)url;
-- (void)addReport:(YPReport *)report ;
+- (void)addReport:(YPReport *)report
+         shotData:(NSData *)shotData
+  terminalLogData:(NSData *)logData ;
 - (void)resume ;
 - (void)suspend ;
 

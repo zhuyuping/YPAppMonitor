@@ -14,5 +14,7 @@
 extern void _YP_reporterNetworkOperation_setBaseUrl(NSString *url) ;
 + (void)postFluencyReports:(NSArray <NSString *>*)reports completedHandler:(YPHttpClientRequestResultBlock)handle ;
 + (void)postCrashReports:(NSArray <NSString *>*)reports completedHandler:(YPHttpClientRequestResultBlock)handle ;
-
++ (void)uploadImagePngWithNames:(NSArray <NSString *>*)filenames
+          fileUrls:(NSArray <NSURL *>*)fileUrls
+  completedHandler:(YPHttpClientRequestResultBlock)handle ;
 @end

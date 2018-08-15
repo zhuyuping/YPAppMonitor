@@ -15,5 +15,7 @@
 #import "UIDevice+YP_Extension.h"
 #import "UIApplication+YP_Extension.h"
 #import "UIScreen+YP_Extension.h"
+#import "UIView+YP_Extension.h"
+#import "NSFileManager+YP_Extension.h"
 
 #endif /* YP_Extension_h */

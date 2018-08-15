@@ -20,6 +20,14 @@ typedef void(^YPHttpClientRequestResultBlock)(id msg,NSError *error);
                    path:(NSString *)path
              parameters:(NSDictionary *)parameters
        completedHandler:(YPHttpClientRequestResultBlock)handle ;
+
++ (void)POSTFilesWithBaseUrl:(NSString *)baseUrl
+                        path:(NSString *)path
+                   fileNames:(NSArray <NSString *>*)fileNames
+                    fileUrls:(NSArray <NSURL *>*)fileUrls
+                contentTypes:(NSArray <NSString *>*)contentTypes
+            completedHandler:(YPHttpClientRequestResultBlock)handle ;
+
 + (void)GetWithBaseUrl:(NSString *)baseUrl
                   path:(NSString *)path
             parameters:(NSDictionary *)parameters

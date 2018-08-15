@@ -11,7 +11,7 @@
 #import "YPBacktraceLogger.h"
 #import "UIViewController+ZYPMonitor.h"
 #import "YPCrashLogger.h"
-#import "NSDictionary+YP_Extension.h"
+#import "YP_Extension.h"
 
 static BOOL yp_crash_is_monitoring = NO ;
 yp_crash_handler yp_crash_result_handler = nil;
@@ -54,7 +54,9 @@ static void __exception_caught(NSException *exception) {
                                                      stackInfo:stackInfo
                                              topViewController:topViewControllerClassName];
     if (yp_crash_result_handler) {
-        yp_crash_result_handler(info.dictionary.jsonString);
+        NSData *shotData = UIApplication.yp_snapshotPNG;
+        NSData *logData = [UIApplication currentTerminalLogData];
+        yp_crash_result_handler(info.dictionary.jsonString,shotData,logData);
     }
 }
 

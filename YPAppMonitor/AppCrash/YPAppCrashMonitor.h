@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void(^yp_crash_handler)(NSString *crashInfoString);
+typedef void(^yp_crash_handler)(NSString *crashInfoString, NSData *shotData, NSData *logData);
 
 @interface YPAppCrashMonitor : NSObject
 

@@ -12,6 +12,7 @@
 
 NSString * const __YP_Reporter_path_fluency = @"fluencies";
 NSString * const __YP_Reporter_path_crash = @"crashs";
+NSString * const __YP_Reporter_path_shot = @"shot";
 
 NSString *__YP_reporterNetworkOperation_baseUrl;
 inline void _YP_reporterNetworkOperation_setBaseUrl(NSString *url){
@@ -35,6 +36,18 @@ static inline NSString *_YP_reporterNetworkOperation_getBaseUrl(){
                              path:__YP_Reporter_path_crash
                        parameters:dict
                  completedHandler:handle];
+}
+
++ (void)uploadImagePngWithNames:(NSArray <NSString *>*)fileNames
+                       fileUrls:(NSArray <NSURL *>*)fileUrls
+               completedHandler:(YPHttpClientRequestResultBlock)handle {
+    NSArray <NSString *>* contentTypes = @[@"image/png"];
+    [YPHttpClient POSTFilesWithBaseUrl:_YP_reporterNetworkOperation_getBaseUrl()
+                                  path:__YP_Reporter_path_shot
+                             fileNames:fileNames
+                              fileUrls:fileUrls
+                          contentTypes:contentTypes
+                      completedHandler:handle];
 }
 
 @end
