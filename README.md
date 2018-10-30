@@ -33,6 +33,6 @@ The progress of delevepment work :
 
 - YPAppMonitor framework for iOS,now is Release;
 
-- YPAppMonitorrServer for node.js,now is developing;
+- YPAppMonitorrServer for node.js,now is Release;
 
-- YPAppMonitorViewer for mac OS,now is developing;
+- YPAppMonitorViewer for mac OS,now is Release;
