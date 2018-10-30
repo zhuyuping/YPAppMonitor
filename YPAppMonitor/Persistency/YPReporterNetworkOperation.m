@@ -13,6 +13,7 @@
 NSString * const __YP_Reporter_path_fluency = @"fluencies";
 NSString * const __YP_Reporter_path_crash = @"crashs";
 NSString * const __YP_Reporter_path_shot = @"shot";
+NSString * const __YP_Reporter_path_log = @"log";
 
 NSString *__YP_reporterNetworkOperation_baseUrl;
 inline void _YP_reporterNetworkOperation_setBaseUrl(NSString *url){
@@ -66,7 +67,7 @@ static inline NSString *_YP_reporterNetworkOperation_getBaseUrl(){
     }];
     NSArray <NSString *>* contentTypes = array.copy;
     [YPHttpClient POSTFilesWithBaseUrl:_YP_reporterNetworkOperation_getBaseUrl()
-                                  path:__YP_Reporter_path_shot
+                                  path:__YP_Reporter_path_log
                              fileNames:fileNames
                               fileUrls:fileUrls
                                   name:@"log"

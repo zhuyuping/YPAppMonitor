@@ -62,7 +62,7 @@ dispatch_queue_t __MonitorReporterOperationQueue;
         dispatch_async(__MonitorReporterOperationQueue, ^{
             [[YPPersistency sharedInstance] addReport:report];
             [[YPPersistency sharedInstance] addShot:shotData name:[identifier stringByAppendingString:@".png"]];
-            NSString *fileName = [report.identifier stringByAppendingString:@".log"];
+            NSString *fileName = [identifier stringByAppendingString:@".log"];
             [[YPPersistency sharedInstance] addTerminalLogWithName:fileName];
         });
     }
