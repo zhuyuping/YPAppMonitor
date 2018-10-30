@@ -9,19 +9,81 @@
 #import "YPPersistency.h"
 #import "YPDispatchQueuePool.h"
 #import "YPReport.h"
+#import "YP_Extension.h"
+#import "YPSystemLogMessage.h"
 
-NSString* const kYPMonitorFluencyReportsPersistencyKey = @"kYPMonitorFluencyReportsPersistencyKey";
-NSString* const kYPMonitorCrashReportsPersistencyKey = @"kYPMonitorCrashReportsPersistencyKey";
+NSString * const kYPMonitorFluencyReportsPersistencyKey = @"kYPMonitorFluencyReportsPersistencyKey";
+NSString * const kYPMonitorCrashReportsPersistencyKey = @"kYPMonitorCrashReportsPersistencyKey";
+NSString * const kYPMonitorScreenShotPersistencyKey = @"kYPMonitorScreenShotPersistencyKey";
+NSString * const kYPMonitorTerminalLogPersistencyKey = @"kYPMonitorTerminalLogPersistencyKey";
+
+NSString * const kShotDirectoryName = @"YPMonitorScreenShot";
+NSString * const kTerminalLogDirectoryName = @"YPMonitorTerminalLog";
+
+NSString * const kFluencyPersistencyFileName = @"YPMonitorFluency.dat";
+NSString * const kCrashPersistencyFileName = @"YPMonitorCrash.dat";
+NSString * const kShotPersistencyFileName = @"YPMonitorShot.dat";
+NSString * const kTerminalLogPersistencyFileName = @"YPMonitorTerminalLog.dat";
+
+NSURL * __fluencySaveDataUrl() {
+    static NSURL *url = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        url = [UIApplication.yp_applicationSupportURL URLByAppendingPathComponent:kFluencyPersistencyFileName];
+    });
+    return url;
+}
+NSURL * __CrashSaveDataUrl() {
+    static NSURL *url = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        url = [UIApplication.yp_applicationSupportURL URLByAppendingPathComponent:kCrashPersistencyFileName];
+    });
+    return url;
+}
+NSURL * __shotIndexDataUrl() {
+    static NSURL *url = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        url = [UIApplication.yp_applicationSupportURL URLByAppendingPathComponent:kShotPersistencyFileName];
+    });
+    return url;
+}
+NSURL * __terminalLogIndexDataUrl() {
+    static NSURL *url = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        url = [UIApplication.yp_applicationSupportURL URLByAppendingPathComponent:kTerminalLogPersistencyFileName];
+    });
+    return url;
+}
+NSURL * __shotDirectoryUrl() {
+    static NSURL *url = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        url = [UIApplication.yp_applicationSupportURL URLByAppendingPathComponent:kShotDirectoryName];
+        [NSFileManager checkAndCreateDirIfNotExistWithPath:url.path];
+    });
+    return url;
+}
+NSURL * __TerminalLogDirectoryUrl() {
+    static NSURL *url = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        url = [UIApplication.yp_applicationSupportURL URLByAppendingPathComponent:kTerminalLogDirectoryName];
+        [NSFileManager checkAndCreateDirIfNotExistWithPath:url.path];
+    });
+    return url;
+}
 
 @interface YPPersistency()
 
 @property(nonatomic, strong) NSMutableArray *fluencyQueue;
 @property(nonatomic, strong) NSMutableArray *crashQueue;
+@property(nonatomic, strong) NSMutableArray *screenShotIndexQueue;
+@property(nonatomic, strong) NSMutableArray *terminalLogIndexQueue;
 
 @end
-
-const NSString * __kFluencyDataKey = @"yp_monitor_persistency_fluencyData_key";
-const NSString * __kCrashDataKey = @"yp_monitor_persistency_crashData_key";
 
 @implementation YPPersistency
 
@@ -35,8 +97,17 @@ const NSString * __kCrashDataKey = @"yp_monitor_persistency_crashData_key";
 - (instancetype)init {
     if (self = [super init]) {
         _queueMaxLength = 200;
-        NSData *fluencySaveData = [NSData dataWithContentsOfURL:[self storageFileURLWithType:YPReportTypeFluency]];
-        NSData *crashSaveData = [NSData dataWithContentsOfURL:[self storageFileURLWithType:YPReportTypeCrash]];
+        
+        _fluencyQueue = @[].mutableCopy;
+        _crashQueue = @[].mutableCopy;
+        _screenShotIndexQueue = @[].mutableCopy;
+        _terminalLogIndexQueue = @[].mutableCopy;
+        
+        NSData *fluencySaveData = [NSData dataWithContentsOfURL:__fluencySaveDataUrl()];
+        NSData *crashSaveData = [NSData dataWithContentsOfURL:__CrashSaveDataUrl()];
+        NSData *screenShotData = [NSData dataWithContentsOfURL:__shotIndexDataUrl()];
+        NSData *terminalLogData = [NSData dataWithContentsOfURL:__terminalLogIndexDataUrl()];
+        
         if (fluencySaveData) {
             NSDictionary* readDict = [NSKeyedUnarchiver unarchiveObjectWithData:fluencySaveData];
             self.fluencyQueue = [readDict[kYPMonitorFluencyReportsPersistencyKey] mutableCopy];
@@ -45,11 +116,23 @@ const NSString * __kCrashDataKey = @"yp_monitor_persistency_crashData_key";
             NSDictionary* readDict = [NSKeyedUnarchiver unarchiveObjectWithData:crashSaveData];
             self.crashQueue = [readDict[kYPMonitorCrashReportsPersistencyKey] mutableCopy];
         }
+        if (screenShotData) {
+            NSDictionary* readDict = [NSKeyedUnarchiver unarchiveObjectWithData:screenShotData];
+            self.screenShotIndexQueue = [readDict[kYPMonitorScreenShotPersistencyKey] mutableCopy];
+        }
+        if (terminalLogData) {
+            NSDictionary* readDict = [NSKeyedUnarchiver unarchiveObjectWithData:terminalLogData];
+            self.terminalLogIndexQueue = [readDict[kYPMonitorTerminalLogPersistencyKey] mutableCopy];
+        }
     }
     return self;
 }
 
-- (void)addToQueue:(YPReport *)report {
+#pragma mark - public
+#pragma mark add method
+
+- (void)addReport:(YPReport *)report {
+    if (!report) return;
     @synchronized (self){
         NSMutableArray *queue = (report.type == YPReportTypeFluency) ? self.fluencyQueue : self.crashQueue;
         if (queue.count > _queueMaxLength) {
@@ -57,14 +140,211 @@ const NSString * __kCrashDataKey = @"yp_monitor_persistency_crashData_key";
         }
         [queue addObject:report];
         if (report.type == YPReportTypeCrash) {
-            [self saveToFileSyncWithType:YPReportTypeCrash];
+            [self saveToFileSyncWithType:YPPersistencyTypeCrashData];
         }
     }
 }
 
+- (void)addShot:(NSData *)data name:(NSString *)name {
+    if (!data || !name) return;
+    dispatch_async(YPDispatchQueueGetForDefaultQOS(), ^{
+        NSURL *fileUrl = [__shotDirectoryUrl() URLByAppendingPathComponent:name];
+        BOOL succes = [data writeToURL:fileUrl atomically:YES];
+        if (succes) {
+            [self.screenShotIndexQueue addObject:name];
+            [self saveShotToFile];
+        }
+    });
+}
+
+- (void)addTerminalLogWithName:(NSString *)name {
+    if (!name) return;
+    dispatch_async(YPDispatchQueueGetForDefaultQOS(), ^{
+        [self.terminalLogIndexQueue addObject:name];
+        NSURL *newFileUrl = [__TerminalLogDirectoryUrl() URLByAppendingPathComponent:name];
+        [YPSystemLogMessage saveToURL:newFileUrl];
+        [self saveTerminalLogToFile];
+    });
+}
+
+#pragma mark - remove method
+
+- (void)removeReports:(NSArray <YPReport *>*)reports {
+    if (!reports || reports.count == 0) return;
+    YPReport *report = reports[0];
+    YPPersistencyType type = (report.type == YPReportTypeFluency) ? YPPersistencyTypeFluencyData : YPPersistencyTypeCrashData;
+    [self remove:type name:nil orReports:reports];
+}
+
+- (void)removeShotWithNames:(NSArray<NSString *> *)names {
+    [self.screenShotIndexQueue removeObjectsInArray:names];
+    [self remove:YPPersistencyTypeScreenShot name:names orReports:nil];
+}
+
+- (void)removeTerminalLogWithNames:(NSArray<NSString *> *)names {
+    [self.terminalLogIndexQueue removeObjectsInArray:names];
+    [self remove:YPPersistencyTypeTerminalLog name:names orReports:nil];
+}
+
+#pragma mark - read method
+
 - (NSArray <YPReport *>*)someReportsWithType:(YPReportType)type {
+    YPPersistencyType newType = (type == YPReportTypeFluency) ? YPPersistencyTypeFluencyData : YPPersistencyTypeCrashData;
+    return [self some:newType];
+}
+
+- (NSArray<NSString *> *)someShotNames {
+    return [self some:YPPersistencyTypeScreenShot];
+}
+
+- (NSArray<NSString *> *)someTerminalLogNames {
+    return [self some:YPPersistencyTypeTerminalLog];
+}
+
++ (NSURL *)urlForScreenShotWithName:(NSString *)name {
+    return [__shotDirectoryUrl() URLByAppendingPathComponent:name];
+}
+
++ (NSURL *)urlTerminalLogWithName:(NSString *)name {
+    return [__TerminalLogDirectoryUrl() URLByAppendingPathComponent:name];
+}
+
++ (NSData *)dataScreenShotWithName:(NSString *)name {
+    if (!name) return nil;
+    NSURL *dataUrl = [__shotDirectoryUrl() URLByAppendingPathComponent:name];
+    return [NSData dataWithContentsOfFile:dataUrl.absoluteString];
+}
+
++ (NSData *)dataTerminalLogWithName:(NSString *)name {
+    if (!name) return nil;
+    NSURL *dataUrl = [__TerminalLogDirectoryUrl() URLByAppendingPathComponent:name];
+    return [NSData dataWithContentsOfFile:dataUrl.absoluteString];
+}
+
+#pragma mark - save method
+
+- (void)saveReportToFileWithType:(YPReportType)type {
+    dispatch_async(YPDispatchQueueGetForDefaultQOS(), ^{
+        YPPersistencyType newType = (type == YPReportTypeFluency) ? YPPersistencyTypeFluencyData : YPPersistencyTypeCrashData;
+        [self saveToFileSyncWithType:newType];
+    });
+}
+
+- (void)saveShotToFile {
+    dispatch_async(YPDispatchQueueGetForDefaultQOS(), ^{
+        [self saveToFileSyncWithType:YPPersistencyTypeScreenShot];
+    });
+}
+
+- (void)saveTerminalLogToFile {
+    dispatch_async(YPDispatchQueueGetForDefaultQOS(), ^{
+        [self saveToFileSyncWithType:YPPersistencyTypeTerminalLog];
+    });
+}
+
+#pragma mark - private
+
+- (void)saveToFileSyncWithType:(YPPersistencyType)type {
+    NSDictionary *dic;
+    NSURL *url;
+    switch (type) {
+        case YPPersistencyTypeFluencyData:
+            dic = @{kYPMonitorFluencyReportsPersistencyKey:self.fluencyQueue};
+            url = __fluencySaveDataUrl();
+            break;
+        case YPPersistencyTypeCrashData:
+            dic = @{kYPMonitorCrashReportsPersistencyKey:self.crashQueue};
+            url = __CrashSaveDataUrl();
+            break;
+        case YPPersistencyTypeScreenShot:
+            dic = @{kYPMonitorScreenShotPersistencyKey:self.screenShotIndexQueue};
+            url = __shotIndexDataUrl();
+            break;
+        default:
+            dic = @{kYPMonitorTerminalLogPersistencyKey:self.terminalLogIndexQueue};
+            url = __terminalLogIndexDataUrl();
+            break;
+    }
+    NSData *data;
     @synchronized (self){
-        NSMutableArray *queue = (type == YPReportTypeFluency) ? self.fluencyQueue : self.crashQueue;
+        data = [NSKeyedArchiver archivedDataWithRootObject:dic];
+        NSError *err;
+        [data writeToURL:url options:NSDataWritingAtomic error:&err];
+        if (err) {
+            NSLog(@"write data fail : %@",err.localizedDescription);
+        }
+    }
+}
+
+- (void)remove:(YPPersistencyType)type
+          name:(NSArray <NSString *>*)names
+     orReports:(NSArray <YPReport*>*)reports {
+    
+    NSMutableArray *queue;
+    NSArray *removeItems;
+    switch (type) {
+        case YPPersistencyTypeFluencyData:
+            NSAssert(reports, @"reports must be not nil");
+            queue =  self.fluencyQueue;
+            removeItems = reports;
+            [self.fluencyQueue removeObjectsInArray:reports];
+            [self saveReportToFileWithType:YPReportTypeFluency];
+            break;
+        case YPPersistencyTypeCrashData:
+            NSAssert(reports, @"reports must be not nil");
+            queue =  self.crashQueue;
+            removeItems = reports;
+            [self.crashQueue removeObjectsInArray:reports];
+            [self saveReportToFileWithType:YPReportTypeCrash];
+            break;
+        case YPPersistencyTypeScreenShot:
+            NSAssert(names, @"names must be not nil");
+            queue =  self.screenShotIndexQueue;
+            removeItems = names;
+            [self removeDataWithType:type names:removeItems];
+            break;
+        default:
+            NSAssert(names, @"names must be not nil");
+            queue =  self.terminalLogIndexQueue;
+            removeItems = names;
+            [self removeDataWithType:type names:removeItems];
+            break;
+    }
+    
+}
+
+- (void)removeDataWithType:(YPPersistencyType)type names:(NSArray <NSString *>*)names {
+    dispatch_async(YPDispatchQueueGetForDefaultQOS(), ^{
+        for (NSString *name in names) {
+            NSURL *fileUrl = (type == YPPersistencyTypeScreenShot) ? [YPPersistency urlForScreenShotWithName:name] : [YPPersistency urlTerminalLogWithName:name];
+            NSError *error = nil;
+            NSLog(@"=====移除 :%@",fileUrl);
+            [NSFileManager.defaultManager removeItemAtURL:fileUrl error:&error];
+            if(error){
+                NSLog(@"=====移除失败 file can not be remove: \n%@", error);
+            }
+        }
+    });
+}
+
+- (NSArray *)some:(YPPersistencyType)type {
+    @synchronized (self){
+        NSMutableArray *queue ;
+        switch (type) {
+            case YPPersistencyTypeFluencyData:
+                queue = self.fluencyQueue;
+                break;
+            case YPPersistencyTypeCrashData:
+                queue = self.crashQueue;
+                break;
+            case YPPersistencyTypeScreenShot:
+                queue = self.screenShotIndexQueue;
+                break;
+            default:
+                queue = self.terminalLogIndexQueue;
+                break;
+        }
+        
         if (queue.count <= 10) {
             return queue.copy;
         }
@@ -77,88 +357,6 @@ const NSString * __kCrashDataKey = @"yp_monitor_persistency_crashData_key";
             return someReports.copy;
         }
     }
-}
-
-- (void)removeReports:(NSArray <YPReport *>*)reports {
-    if (!reports || reports.count == 0) { return; }
-    YPReport *report = reports[0];
-    @synchronized (self){
-        NSMutableArray *queue = (report.type == YPReportTypeFluency) ? self.fluencyQueue : self.crashQueue;
-        [queue removeObjectsInArray:reports];
-    }
-}
-
-- (void)saveToFileWithType:(YPReportType)type {
-    dispatch_async(YPDispatchQueueGetForDefaultQOS(), ^{
-        [self saveToFileSyncWithType:type];
-    });
-}
-
-- (void)saveToFileSyncWithType:(YPReportType)type {
-    if (type == YPReportTypeFluency) {
-        NSData* fluencySaveData;
-        @synchronized (self){
-            fluencySaveData = [NSKeyedArchiver archivedDataWithRootObject:@{kYPMonitorFluencyReportsPersistencyKey:self.fluencyQueue}];
-        }
-        [fluencySaveData writeToFile:[self storageFileURLWithType:YPReportTypeFluency].path atomically:YES];
-    }
-    
-    if (type == YPReportTypeCrash) {
-        NSData* crashSaveData;
-        @synchronized (self){
-            crashSaveData = [NSKeyedArchiver archivedDataWithRootObject:@{kYPMonitorCrashReportsPersistencyKey:self.crashQueue}];
-        }
-        [crashSaveData writeToFile:[self storageFileURLWithType:YPReportTypeCrash].path atomically:YES];
-    }
-    
-}
-
-- (NSURL *)storageFileURLWithType:(YPReportType)type{
-    NSString * const kFluencyPersistencyFileName = @"YPMonitorFluency.dat";
-    NSString * const kCrashPersistencyFileName = @"YPMonitorCrash.dat";
-    
-    static NSURL *fluencyUrl = nil;
-    static NSURL *crashUrl = nil;
-    
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^
-                  {
-                      fluencyUrl = [[NSFileManager.defaultManager URLsForDirectory:NSApplicationSupportDirectory inDomains:NSUserDomainMask] lastObject];
-                      crashUrl = [[NSFileManager.defaultManager URLsForDirectory:NSApplicationSupportDirectory inDomains:NSUserDomainMask] lastObject];
-                      NSError *error = nil;
-                      
-                      if (![NSFileManager.defaultManager fileExistsAtPath:fluencyUrl.absoluteString])
-                      {
-                          [NSFileManager.defaultManager createDirectoryAtURL:fluencyUrl withIntermediateDirectories:YES attributes:nil error:&error];
-                          if(error){ NSLog(@"Application Support directory can not be created: \n%@", error); }
-                      }
-                      if (![NSFileManager.defaultManager fileExistsAtPath:crashUrl.absoluteString])
-                      {
-                          [NSFileManager.defaultManager createDirectoryAtURL:crashUrl withIntermediateDirectories:YES attributes:nil error:&error];
-                          if(error){ NSLog(@"Application Support directory can not be created: \n%@", error); }
-                      }
-                      
-                      fluencyUrl = [fluencyUrl URLByAppendingPathComponent:kFluencyPersistencyFileName];
-                      crashUrl = [crashUrl URLByAppendingPathComponent:kCrashPersistencyFileName];
-                  });
-    
-    return (type == YPReportTypeFluency) ? fluencyUrl : crashUrl;
-}
-
-#pragma mark - get && set
-
-- (NSMutableArray *)fluencyQueue {
-    if (!_fluencyQueue) {
-        _fluencyQueue = @[].mutableCopy;
-    }
-    return _fluencyQueue;
-}
-
-- (NSMutableArray *)crashQueue {
-    if (!_crashQueue) {
-        _crashQueue = @[].mutableCopy;
-    }
-    return _crashQueue;
 }
 
 @end

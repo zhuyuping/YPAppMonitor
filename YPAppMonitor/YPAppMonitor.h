@@ -14,9 +14,11 @@
 
 @interface YPAppMonitorConfiguration : NSObject
 
-@property(nonatomic, assign) BOOL useFluencymonitoring;                         // default is Yes
+@property(nonatomic, assign) BOOL useFluencymonitoring;                         // default is YES
 @property(nonatomic, assign) BOOL showAlertWhenNotFluency;                      // default is NO
-@property(nonatomic, assign) BOOL useCrashMonitoring;                           // default is Yes
+@property(nonatomic, assign) BOOL useCrashMonitoring;                           // default is YES
+@property(nonatomic, assign) BOOL allowCollectedShotWhenFluency;                // default is NO
+@property(nonatomic, assign) BOOL allowCollectedShotWhenCrash;                  // default is YES
 @property(nonatomic, strong) NSURL *reportServerBaseUrl;                        // default is nil
 
 @end

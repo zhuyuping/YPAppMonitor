@@ -11,6 +11,8 @@
 #import "YPAppCrashMonitor.h"
 #import "YPMonitorReporter.h"
 #import "YPReport.h"
+#import "YP_Extension.h"
+#import "YPSystemLogMessage.h"
 
 @implementation YPAppMonitorConfiguration
 
@@ -73,17 +75,18 @@
         [[YPMonitorReporter sharedInstance] resume];
     }
     if (config.useFluencymonitoring) {
-        [YPAppFluencyMonitor startWithCompletedHandler:^(NSString *backtrace) {
+        [YPAppFluencyMonitor startWithCompletedHandler:^(NSString *identifier, NSString *backtrace, NSData *shotData) {
             YPReport *report = [YPReport reportForFluencyWithContent:backtrace];
-            [[YPMonitorReporter sharedInstance] addReport:report];
+            [[YPMonitorReporter sharedInstance] addReport:report shotData:shotData identifier:identifier];
         }];
     }
     if (config.useCrashMonitoring) {
-        [YPAppCrashMonitor startWithCompletedHandler:^(NSString *crashInfoString) {
+        [YPAppCrashMonitor startWithCompletedHandler:^(NSString *identifier, NSString *crashInfoString, NSData *shotData) {
             YPReport *report = [YPReport reportForCrashWithContent:crashInfoString];
-            [[YPMonitorReporter sharedInstance] addReport:report];
+            [[YPMonitorReporter sharedInstance] addReport:report shotData:shotData identifier:identifier];
         }];
     }
+    
 }
 
 - (void)suspend {

@@ -26,7 +26,7 @@
     YPAppMonitorConfiguration *config = [YPAppMonitorConfiguration new];
     config.useCrashMonitoring = YES;
     config.useFluencymonitoring = YES;
-    config.reportServerBaseUrl = [NSURL URLWithString:@"http://127.0.0.1:8088/YPAppMonitor/"];
+    config.reportServerBaseUrl = [NSURL URLWithString:@"http://192.168.2.112:8088/YPAppMonitor/"];
     [YPAppMonitor startWithConfiguration:config];
 
 }
@@ -69,15 +69,5 @@
         return;
     }
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
