@@ -26,9 +26,9 @@
     
 }
 
-- (void)dealloc {
-    [YPAppFluencyMonitor stop];
-}
+//- (void)dealloc {
+//    [YPAppFluencyMonitor stop];
+//}
 
 #pragma mark - Table view data source
 

@@ -21,7 +21,6 @@
     [super viewDidLoad];
     _testArray = @[@"1"];
     
-    
 }
 
 - (void)didReceiveMemoryWarning {

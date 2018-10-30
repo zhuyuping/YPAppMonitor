@@ -147,22 +147,5 @@ NSData * __yp_get_snapshot_png(void) {
     }
 }
 
-+ (void)redirectTerminalLog {
-    NSString *dirPath = [[self yp_applicationSupportPath] stringByAppendingPathComponent:@"applog"];
-    [NSFileManager checkAndCreateDirIfNotExistWithPath:dirPath];
-    NSString *filePath = [dirPath stringByAppendingPathComponent:@"app.log"];
-    [self redirectTerminalLogWithNewPath:filePath];
-}
-
-+ (void)redirectTerminalLogWithNewPath:(NSString *)path {
-    NSLog(@"terminal log now is redirect to file , so there are blank in xcode terminal log");
-    freopen([path cStringUsingEncoding:NSASCIIStringEncoding],"a+", stdout);
-    freopen([path cStringUsingEncoding:NSASCIIStringEncoding],"a+", stderr);
-}
-
-+ (NSData *)currentTerminalLogData {
-    NSString *path = [[self yp_applicationSupportPath] stringByAppendingPathComponent:@"applog/app.log"];
-    return [NSData dataWithContentsOfFile:path];
-}
 
 @end

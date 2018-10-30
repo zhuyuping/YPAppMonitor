@@ -40,6 +40,7 @@
 		1CA991EE2109A62400B4D58A /* YPAppMonitor.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 1CA991ED2109A62300B4D58A /* YPAppMonitor.podspec */; };
 		1CAF03B620D3B12C0097730E /* YPReport.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CAF03B520D3B12C0097730E /* YPReport.m */; };
 		1CB3E33D2123F1F2001A593F /* NSFileManager+YP_Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB3E33C2123F1F2001A593F /* NSFileManager+YP_Extension.m */; };
+		1CB3E34021254BD0001A593F /* YPSystemLogMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB3E33F21254BD0001A593F /* YPSystemLogMessage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -107,6 +108,8 @@
 		1CAF03B520D3B12C0097730E /* YPReport.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YPReport.m; sourceTree = "<group>"; };
 		1CB3E33B2123F1F2001A593F /* NSFileManager+YP_Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+YP_Extension.h"; sourceTree = "<group>"; };
 		1CB3E33C2123F1F2001A593F /* NSFileManager+YP_Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+YP_Extension.m"; sourceTree = "<group>"; };
+		1CB3E33E21254BD0001A593F /* YPSystemLogMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YPSystemLogMessage.h; sourceTree = "<group>"; };
+		1CB3E33F21254BD0001A593F /* YPSystemLogMessage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YPSystemLogMessage.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,6 +241,8 @@
 				1C99007220BE732300B8BAC5 /* YPDispatchQueuePool.m */,
 				1C99007520BE732300B8BAC5 /* YPCrashLogger.h */,
 				1C99007320BE732300B8BAC5 /* YPCrashLogger.m */,
+				1CB3E33E21254BD0001A593F /* YPSystemLogMessage.h */,
+				1CB3E33F21254BD0001A593F /* YPSystemLogMessage.m */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -369,6 +374,7 @@
 				1C99007920BE732300B8BAC5 /* YPAppCrashInfo.m in Sources */,
 				1CB3E33D2123F1F2001A593F /* NSFileManager+YP_Extension.m in Sources */,
 				1C69651420D28D8F00B183F7 /* YPHttpClient.m in Sources */,
+				1CB3E34021254BD0001A593F /* YPSystemLogMessage.m in Sources */,
 				1C99007A20BE732300B8BAC5 /* YPAppCrashMonitor.m in Sources */,
 				1C99005E20BE70F100B8BAC5 /* main.m in Sources */,
 				1C14D5E820F49C5B00A8C811 /* YPAppFluencyInfo.m in Sources */,

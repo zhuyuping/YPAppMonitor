@@ -10,6 +10,7 @@
 #import "YPDispatchQueuePool.h"
 #import "YPReport.h"
 #import "YP_Extension.h"
+#import "YPSystemLogMessage.h"
 
 NSString * const kYPMonitorFluencyReportsPersistencyKey = @"kYPMonitorFluencyReportsPersistencyKey";
 NSString * const kYPMonitorCrashReportsPersistencyKey = @"kYPMonitorCrashReportsPersistencyKey";
@@ -28,8 +29,7 @@ NSURL * __fluencySaveDataUrl() {
     static NSURL *url = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        url = UIApplication.yp_applicationSupportURL;
-        [url URLByAppendingPathComponent:kFluencyPersistencyFileName];
+        url = [UIApplication.yp_applicationSupportURL URLByAppendingPathComponent:kFluencyPersistencyFileName];
     });
     return url;
 }
@@ -37,8 +37,7 @@ NSURL * __CrashSaveDataUrl() {
     static NSURL *url = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        url = UIApplication.yp_applicationSupportURL;
-        [url URLByAppendingPathComponent:kCrashPersistencyFileName];
+        url = [UIApplication.yp_applicationSupportURL URLByAppendingPathComponent:kCrashPersistencyFileName];
     });
     return url;
 }
@@ -46,8 +45,7 @@ NSURL * __shotIndexDataUrl() {
     static NSURL *url = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        url = UIApplication.yp_applicationSupportURL;
-        [url URLByAppendingPathComponent:kShotPersistencyFileName];
+        url = [UIApplication.yp_applicationSupportURL URLByAppendingPathComponent:kShotPersistencyFileName];
     });
     return url;
 }
@@ -55,8 +53,7 @@ NSURL * __terminalLogIndexDataUrl() {
     static NSURL *url = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        url = UIApplication.yp_applicationSupportURL;
-        [url URLByAppendingPathComponent:kTerminalLogPersistencyFileName];
+        url = [UIApplication.yp_applicationSupportURL URLByAppendingPathComponent:kTerminalLogPersistencyFileName];
     });
     return url;
 }
@@ -151,19 +148,22 @@ NSURL * __TerminalLogDirectoryUrl() {
 - (void)addShot:(NSData *)data name:(NSString *)name {
     if (!data || !name) return;
     dispatch_async(YPDispatchQueueGetForDefaultQOS(), ^{
-        
         NSURL *fileUrl = [__shotDirectoryUrl() URLByAppendingPathComponent:name];
-        BOOL succes = [data writeToFile:fileUrl.path atomically:YES];
-        if (succes) { [self.screenShotIndexQueue addObject:name];}
+        BOOL succes = [data writeToURL:fileUrl atomically:YES];
+        if (succes) {
+            [self.screenShotIndexQueue addObject:name];
+            [self saveShotToFile];
+        }
     });
 }
 
-- (void)addTerminalLog:(NSData *)data name:(NSString *)name {
-    if (!data || !name) return;
+- (void)addTerminalLogWithName:(NSString *)name {
+    if (!name) return;
     dispatch_async(YPDispatchQueueGetForDefaultQOS(), ^{
-        NSURL *fileUrl = [__TerminalLogDirectoryUrl() URLByAppendingPathComponent:name];
-        [data writeToFile:fileUrl.path atomically:YES];
-        [self.screenShotIndexQueue addObject:name];
+        [self.terminalLogIndexQueue addObject:name];
+        NSURL *newFileUrl = [__TerminalLogDirectoryUrl() URLByAppendingPathComponent:name];
+        [YPSystemLogMessage saveToURL:newFileUrl];
+        [self saveTerminalLogToFile];
     });
 }
 
@@ -177,10 +177,12 @@ NSURL * __TerminalLogDirectoryUrl() {
 }
 
 - (void)removeShotWithNames:(NSArray<NSString *> *)names {
+    [self.screenShotIndexQueue removeObjectsInArray:names];
     [self remove:YPPersistencyTypeScreenShot name:names orReports:nil];
 }
 
 - (void)removeTerminalLogWithNames:(NSArray<NSString *> *)names {
+    [self.terminalLogIndexQueue removeObjectsInArray:names];
     [self remove:YPPersistencyTypeTerminalLog name:names orReports:nil];
 }
 
@@ -263,10 +265,14 @@ NSURL * __TerminalLogDirectoryUrl() {
             url = __terminalLogIndexDataUrl();
             break;
     }
-    NSData* data;
+    NSData *data;
     @synchronized (self){
         data = [NSKeyedArchiver archivedDataWithRootObject:dic];
-        [data writeToFile:url.path atomically:YES];
+        NSError *err;
+        [data writeToURL:url options:NSDataWritingAtomic error:&err];
+        if (err) {
+            NSLog(@"write data fail : %@",err.localizedDescription);
+        }
     }
 }
 
@@ -281,11 +287,15 @@ NSURL * __TerminalLogDirectoryUrl() {
             NSAssert(reports, @"reports must be not nil");
             queue =  self.fluencyQueue;
             removeItems = reports;
+            [self.fluencyQueue removeObjectsInArray:reports];
+            [self saveReportToFileWithType:YPReportTypeFluency];
             break;
         case YPPersistencyTypeCrashData:
             NSAssert(reports, @"reports must be not nil");
             queue =  self.crashQueue;
             removeItems = reports;
+            [self.crashQueue removeObjectsInArray:reports];
+            [self saveReportToFileWithType:YPReportTypeCrash];
             break;
         case YPPersistencyTypeScreenShot:
             NSAssert(names, @"names must be not nil");
@@ -300,17 +310,21 @@ NSURL * __TerminalLogDirectoryUrl() {
             [self removeDataWithType:type names:removeItems];
             break;
     }
+    
 }
 
 - (void)removeDataWithType:(YPPersistencyType)type names:(NSArray <NSString *>*)names {
-    for (NSString *name in names) {
-        dispatch_async(YPDispatchQueueGetForDefaultQOS(), ^{
+    dispatch_async(YPDispatchQueueGetForDefaultQOS(), ^{
+        for (NSString *name in names) {
             NSURL *fileUrl = (type == YPPersistencyTypeScreenShot) ? [YPPersistency urlForScreenShotWithName:name] : [YPPersistency urlTerminalLogWithName:name];
             NSError *error = nil;
+            NSLog(@"=====移除 :%@",fileUrl);
             [NSFileManager.defaultManager removeItemAtURL:fileUrl error:&error];
-            if(error){ NSLog(@"ScreenShot file can not be remove: \n%@", error); }
-        });
-    }
+            if(error){
+                NSLog(@"=====移除失败 file can not be remove: \n%@", error);
+            }
+        }
+    });
 }
 
 - (NSArray *)some:(YPPersistencyType)type {

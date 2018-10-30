@@ -25,7 +25,7 @@ typedef enum : NSUInteger {
 // add method
 - (void)addReport:(YPReport *)report ;
 - (void)addShot:(NSData *)data name:(NSString *)name ;
-- (void)addTerminalLog:(NSData *)data name:(NSString *)name;
+- (void)addTerminalLogWithName:(NSString *)name ;
 
 // remove method
 - (void)removeReports:(NSArray <YPReport *>*)reports ;

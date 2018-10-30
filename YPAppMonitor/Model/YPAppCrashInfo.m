@@ -64,6 +64,7 @@
 
 - (NSDictionary *)dictionary {
     return @{
+             @"identifier" : _identifier,
              @"name" : _name,
              @"reason" : _reason,
              @"stackInfo" : _stackInfo,

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-typedef void(^yp_flunecy_handler)(NSString *backtrace, NSData *shotData, NSData *logData);
+typedef void(^yp_flunecy_handler)(NSString *identifier, NSString *backtrace, NSData *shotData);
 
 @interface YPAppFluencyMonitor : NSObject
 

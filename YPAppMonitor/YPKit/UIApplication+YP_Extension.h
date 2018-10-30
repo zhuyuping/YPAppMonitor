@@ -28,8 +28,4 @@
 // 包含statusBar的全屏截图
 + (NSData *)yp_snapshotPNG ;
 
-// 重定向日志文件
-+ (void)redirectTerminalLog ;
-+ (NSData *)currentTerminalLogData ;
-
 @end

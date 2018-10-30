@@ -61,8 +61,7 @@ static inline void __fluency_semaphore_init(){
                     NSString *topViewControllerClassName = NSStringFromClass([[UIViewController YP_findTopViewController] class]);
                     YPAppFluencyInfo *info  = [YPAppFluencyInfo fluencyInfoWithStackInfo:[YPBacktraceLogger YP_backtraceOfMainThread] topViewController:topViewControllerClassName];
                     NSData *shotData = UIApplication.yp_snapshotPNG;
-                    NSData *logData = [UIApplication currentTerminalLogData];
-                    yp_fluency_result_handler(info.dictionary.jsonString,shotData,logData);
+                    yp_fluency_result_handler(info.identifier,info.dictionary.jsonString,shotData);
                 }
                 
                 if (yp_fluency_defaultShow_falg) {

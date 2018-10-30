@@ -25,6 +25,7 @@ typedef void(^YPHttpClientRequestResultBlock)(id msg,NSError *error);
                         path:(NSString *)path
                    fileNames:(NSArray <NSString *>*)fileNames
                     fileUrls:(NSArray <NSURL *>*)fileUrls
+                        name:(NSString *)name
                 contentTypes:(NSArray <NSString *>*)contentTypes
             completedHandler:(YPHttpClientRequestResultBlock)handle ;
 

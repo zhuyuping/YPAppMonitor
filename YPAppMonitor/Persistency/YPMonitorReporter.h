@@ -16,7 +16,7 @@
 - (void)configReportUrl:(NSURL *)url;
 - (void)addReport:(YPReport *)report
          shotData:(NSData *)shotData
-  terminalLogData:(NSData *)logData ;
+       identifier:(NSString *)identifier ;
 - (void)resume ;
 - (void)suspend ;
 

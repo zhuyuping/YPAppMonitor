@@ -17,4 +17,7 @@ extern void _YP_reporterNetworkOperation_setBaseUrl(NSString *url) ;
 + (void)uploadImagePngWithNames:(NSArray <NSString *>*)filenames
           fileUrls:(NSArray <NSURL *>*)fileUrls
   completedHandler:(YPHttpClientRequestResultBlock)handle ;
++ (void)uploadTerminalLogFileWithNames:(NSArray <NSString *>*)fileNames
+                              fileUrls:(NSArray <NSURL *>*)fileUrls
+                      completedHandler:(YPHttpClientRequestResultBlock)handle ;
 @end

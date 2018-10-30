@@ -48,16 +48,29 @@ dispatch_queue_t __MonitorReporterOperationQueue;
     _YP_reporterNetworkOperation_setBaseUrl(reportUrl.absoluteString);
 }
 
-- (void)addReport:(YPReport *)report shotData:(NSData *)shotData terminalLogData:(NSData *)logData {
-    dispatch_async(__MonitorReporterOperationQueue, ^{
-        [[YPPersistency sharedInstance] addReport:report];
-        [[YPPersistency sharedInstance] addShot:shotData name:[report.identifier stringByAppendingString:@".png"]];
-        [[YPPersistency sharedInstance] addTerminalLog:logData name:[report.identifier stringByAppendingString:@".log"]];
-    });
+- (void)addReport:(YPReport *)report
+         shotData:(NSData *)shotData
+       identifier:(NSString *)identifier {
+    
+    if (report.type == YPReportTypeFluency) {
+        dispatch_async(__MonitorReporterOperationQueue, ^{
+            [[YPPersistency sharedInstance] addReport:report];
+            [[YPPersistency sharedInstance] addShot:shotData name:[identifier stringByAppendingString:@".png"]];
+        });
+    }
+    else {
+        dispatch_async(__MonitorReporterOperationQueue, ^{
+            [[YPPersistency sharedInstance] addReport:report];
+            [[YPPersistency sharedInstance] addShot:shotData name:[identifier stringByAppendingString:@".png"]];
+            NSString *fileName = [report.identifier stringByAppendingString:@".log"];
+            [[YPPersistency sharedInstance] addTerminalLogWithName:fileName];
+        });
+    }
 }
 
 - (void)resume {
     if (!reportUrl) { NSLog(@"please config reportServerUrl"); return; }
+    isSuspended = NO;
     if (timer) return;
     timer = [NSTimer scheduledTimerWithTimeInterval:__updateSessionPeriod
                                              target:self
@@ -65,6 +78,7 @@ dispatch_queue_t __MonitorReporterOperationQueue;
                                            userInfo:nil
                                             repeats:YES];
     [NSRunLoop.mainRunLoop addTimer:timer forMode:NSRunLoopCommonModes];
+    
 }
 
 - (void)suspend {
@@ -84,9 +98,11 @@ dispatch_queue_t __MonitorReporterOperationQueue;
     NSArray *someFluencyReports = [[YPPersistency sharedInstance] someReportsWithType:YPReportTypeFluency];
     NSArray *someCrashReports = [[YPPersistency sharedInstance] someReportsWithType:YPReportTypeCrash];
     NSArray *someShotNames = [[YPPersistency sharedInstance] someShotNames];
+    NSArray *someTerminalLogNames = [[YPPersistency sharedInstance] someTerminalLogNames];
     if (someFluencyReports.count > 0) { [self sendWithReports:someFluencyReports]; }
     if (someCrashReports.count > 0) { [self sendWithReports:someCrashReports]; }
     if (someShotNames.count > 0) { [self sendWithShotNames:someShotNames]; }
+    if (someTerminalLogNames.count > 0) { [self sendWithTerminalLogNames:someTerminalLogNames]; }
 }
 
 - (void)sendWithReports:(NSArray <YPReport *>*)reports {
@@ -130,6 +146,24 @@ dispatch_queue_t __MonitorReporterOperationQueue;
                                                [[YPPersistency sharedInstance] saveShotToFile];
                                            }
                                        }];
+}
+
+- (void)sendWithTerminalLogNames:(NSArray <NSString *>*)names {
+    NSMutableArray <NSURL *>*urls = @[].mutableCopy;
+    for (NSString *name in names) {
+        NSURL *url = [YPPersistency urlTerminalLogWithName:name];
+        [urls addObject:url];
+    }
+    [YPReporterNetworkOperation uploadTerminalLogFileWithNames:names
+                                                      fileUrls:urls
+                                              completedHandler:^(id msg, NSError *error) {
+                                                  if (!error) {
+                                                      [[YPPersistency sharedInstance] removeTerminalLogWithNames:names];
+                                                  }
+                                                  else {
+                                                      [[YPPersistency sharedInstance] saveTerminalLogToFile];
+                                                  }
+                                              }];
 }
 
 - (NSArray <NSString *>*)stringArrayFromReportArray:(NSArray <YPReport *>*)reportArray {

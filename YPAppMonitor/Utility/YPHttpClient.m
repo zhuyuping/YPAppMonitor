@@ -30,6 +30,7 @@
                         path:(NSString *)path
                    fileNames:(NSArray <NSString *>*)fileNames
                     fileUrls:(NSArray <NSURL *>*)fileUrls
+                        name:(NSString *)name
                 contentTypes:(NSArray <NSString *>*)contentTypes
             completedHandler:(YPHttpClientRequestResultBlock)handle {
     [self sendFilesRequestWithMethod:kHttpMethod_POST
@@ -37,6 +38,7 @@
                                 path:path
                            fileNames:fileNames
                             fileUrls:fileUrls
+                                name:name
                         contentTypes:contentTypes
                     completedHandler:handle];
 }
@@ -75,6 +77,7 @@
                               path:(NSString *)path
                          fileNames:(NSArray <NSString *>*)fileNames
                           fileUrls:(NSArray <NSURL *>*)fileUrls
+                              name:(NSString *)name
                       contentTypes:(NSArray <NSString *>*)contentTypes
                   completedHandler:(YPHttpClientRequestResultBlock)handle {
     
@@ -83,6 +86,7 @@
                                                           path:path
                                                      fileNames:fileNames
                                                       fileUrls:fileUrls
+                                                          name:@""
                                                   contentTypes:contentTypes];
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
@@ -126,6 +130,7 @@
                                           path:(NSString *)path
                                      fileNames:(NSArray <NSString *>*)fileNames
                                       fileUrls:(NSArray <NSURL *>*)fileUrls
+                                          name:(NSString *)name
                                   contentTypes:(NSArray <NSString *>*)contentTypes {
     NSMutableURLRequest *request;
     NSURL *url = [NSURL URLWithString:[baseUrl stringByAppendingString:path]];
@@ -133,7 +138,7 @@
     request.HTTPMethod = method;
     request.timeoutInterval = 6.0;
     
-    static NSString *boundary=@"xdxd2313132331221232Request";
+    static NSString *boundary = @"xdxd2313132331221232Request";
     
     //拼接请求体数据(0-6步)
     NSMutableData *requestMutableData = [NSMutableData data];
@@ -141,15 +146,16 @@
     for (int i = 0; i < fileNames.count; i++) {
         /*--------------------------------------------------------------------------*/
         //1.\r\n--Boundary+72D4CD655314C423\r\n   // 分割符，以“--”开头，后面的字随便写，只要不写中文即可
-        NSMutableString *myString=[NSMutableString stringWithFormat:@"\r\n--%@\r\n",boundary];
+        NSMutableString *myString = [NSMutableString stringWithFormat:@"\r\n--%@\r\n",boundary];
         
         //2. Content-Disposition: form-data; name="image"; filename="001.png"\r\n
         // 这里注明服务器接收图片的参数（类似于接收用户名的userName）及服务器上保存图片的文件名
         NSString *fileName = fileNames[i];
-        [myString appendString:[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"image\"; filename=\"%@\"\r\n",fileName]];
+        [myString appendString:[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\n",name,fileName]];
         
         //3. Content-Type:image/png \r\n  // 图片类型为png
-        [myString appendString:[NSString stringWithFormat:@"Content-Type:image/png\r\n"]];
+        NSString *contentString = [NSString stringWithFormat:@"Content-Type:%@\r\n",contentTypes[i]];
+        [myString appendString:contentString];
         
         //4. Content-Transfer-Encoding: binary\r\n\r\n  // 编码方式
         [myString appendString:@"Content-Transfer-Encoding: binary\r\n\r\n"];
@@ -163,15 +169,13 @@
         NSData *filedata = [NSData dataWithContentsOfFile:fileUrl.path];
         [requestMutableData appendData:filedata];
 //        [requestMutableData appendData:[@"这是内容" dataUsingEncoding:NSUTF8StringEncoding]];
-        
-        //6. \r\n--Boundary+72D4CD655314C423--\r\n  // 分隔符后面以"--"结尾，表明结束
-        [requestMutableData appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-        /*--------------------------------------------------------------------------*/
-        
-        //设置请求体
-        request.HTTPBody = requestMutableData;
-//        NSLog(@"以下:\n %@",[[NSString alloc] initWithData:requestMutableData encoding:NSUTF8StringEncoding]);
+
     }
+    //6. \r\n--Boundary+72D4CD655314C423--\r\n  // 分隔符后面以"--"结尾，表明结束
+    [requestMutableData appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    //设置请求体
+    request.HTTPBody = requestMutableData;
+    NSLog(@"以下:\n %@",[[NSString alloc] initWithData:requestMutableData encoding:NSUTF8StringEncoding]);
     //设置请求头
     NSString *headStr = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",boundary];
     [request setValue:headStr forHTTPHeaderField:@"Content-Type"];

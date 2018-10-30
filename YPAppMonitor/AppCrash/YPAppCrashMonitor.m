@@ -46,17 +46,15 @@ yp_crash_handler yp_crash_result_handler = nil;
 }
 
 static void __exception_caught(NSException *exception) {
-    
     NSString *stackInfo = [YPBacktraceLogger YP_backtraceOfAllThread];
     NSString *topViewControllerClassName = NSStringFromClass([[UIViewController YP_findTopViewController] class]);
     YPAppCrashInfo *info = [YPAppCrashInfo crashInfoWithName:exception.name
-                                                        reason:exception.reason
-                                                     stackInfo:stackInfo
-                                             topViewController:topViewControllerClassName];
+                                                      reason:exception.reason
+                                                   stackInfo:stackInfo
+                                           topViewController:topViewControllerClassName];
     if (yp_crash_result_handler) {
         NSData *shotData = UIApplication.yp_snapshotPNG;
-        NSData *logData = [UIApplication currentTerminalLogData];
-        yp_crash_result_handler(info.dictionary.jsonString,shotData,logData);
+        yp_crash_result_handler(info.identifier,info.dictionary.jsonString,shotData);
     }
 }
 

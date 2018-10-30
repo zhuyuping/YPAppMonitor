@@ -26,8 +26,15 @@
     YPAppMonitorConfiguration *config = [YPAppMonitorConfiguration new];
     config.useCrashMonitoring = YES;
     config.useFluencymonitoring = YES;
-    config.reportServerBaseUrl = [NSURL URLWithString:@"http://192.168.2.114:8088/YPAppMonitor/"];
+    config.reportServerBaseUrl = [NSURL URLWithString:@"http://192.168.2.112:8088/YPAppMonitor/"];
     [YPAppMonitor startWithConfiguration:config];
+    // 172.20.10.13 169.254.14.90
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {

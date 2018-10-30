@@ -41,11 +41,35 @@ static inline NSString *_YP_reporterNetworkOperation_getBaseUrl(){
 + (void)uploadImagePngWithNames:(NSArray <NSString *>*)fileNames
                        fileUrls:(NSArray <NSURL *>*)fileUrls
                completedHandler:(YPHttpClientRequestResultBlock)handle {
-    NSArray <NSString *>* contentTypes = @[@"image/png"];
+    NSMutableArray *array = @[].mutableCopy;
+    [fileNames enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [array addObject:@"image/png"];
+    }];
+    NSArray <NSString *>* contentTypes = array.copy;
     [YPHttpClient POSTFilesWithBaseUrl:_YP_reporterNetworkOperation_getBaseUrl()
                                   path:__YP_Reporter_path_shot
                              fileNames:fileNames
                               fileUrls:fileUrls
+                                  name:@"image"
+                          contentTypes:contentTypes
+                      completedHandler:handle];
+}
+
++ (void)uploadTerminalLogFileWithNames:(NSArray <NSString *>*)fileNames
+                       fileUrls:(NSArray <NSURL *>*)fileUrls
+               completedHandler:(YPHttpClientRequestResultBlock)handle {
+    NSMutableArray *array = @[].mutableCopy;
+    [fileNames enumerateObjectsUsingBlock:^(NSString * _Nonnull obj,
+                                            NSUInteger idx,
+                                            BOOL * _Nonnull stop) {
+        [array addObject:@"text/plain"];
+    }];
+    NSArray <NSString *>* contentTypes = array.copy;
+    [YPHttpClient POSTFilesWithBaseUrl:_YP_reporterNetworkOperation_getBaseUrl()
+                                  path:__YP_Reporter_path_shot
+                             fileNames:fileNames
+                              fileUrls:fileUrls
+                                  name:@"log"
                           contentTypes:contentTypes
                       completedHandler:handle];
 }
