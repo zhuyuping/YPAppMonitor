@@ -55,15 +55,17 @@ dispatch_queue_t __MonitorReporterOperationQueue;
     if (report.type == YPReportTypeFluency) {
         dispatch_async(__MonitorReporterOperationQueue, ^{
             [[YPPersistency sharedInstance] addReport:report];
-            [[YPPersistency sharedInstance] addShot:shotData name:[identifier stringByAppendingString:@".png"]];
+            NSString *shotFileName = [identifier stringByAppendingString:@".png"];
+            [[YPPersistency sharedInstance] addShot:shotData name:shotFileName];
         });
     }
     else {
         dispatch_async(__MonitorReporterOperationQueue, ^{
             [[YPPersistency sharedInstance] addReport:report];
-            [[YPPersistency sharedInstance] addShot:shotData name:[identifier stringByAppendingString:@".png"]];
-            NSString *fileName = [identifier stringByAppendingString:@".log"];
-            [[YPPersistency sharedInstance] addTerminalLogWithName:fileName];
+            NSString *shotFileName = [identifier stringByAppendingString:@".png"];
+            NSString *logFileName = [identifier stringByAppendingString:@".log"];
+            [[YPPersistency sharedInstance] addShot:shotData name:shotFileName];
+            [[YPPersistency sharedInstance] addTerminalLogWithName:logFileName];
         });
     }
 }

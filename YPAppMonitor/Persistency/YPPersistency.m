@@ -300,12 +300,14 @@ NSURL * __TerminalLogDirectoryUrl() {
         case YPPersistencyTypeScreenShot:
             NSAssert(names, @"names must be not nil");
             queue =  self.screenShotIndexQueue;
+            [self saveShotToFile];
             removeItems = names;
             [self removeDataWithType:type names:removeItems];
             break;
         default:
             NSAssert(names, @"names must be not nil");
             queue =  self.terminalLogIndexQueue;
+            [self saveTerminalLogToFile];
             removeItems = names;
             [self removeDataWithType:type names:removeItems];
             break;
@@ -318,10 +320,10 @@ NSURL * __TerminalLogDirectoryUrl() {
         for (NSString *name in names) {
             NSURL *fileUrl = (type == YPPersistencyTypeScreenShot) ? [YPPersistency urlForScreenShotWithName:name] : [YPPersistency urlTerminalLogWithName:name];
             NSError *error = nil;
-            NSLog(@"=====移除 :%@",fileUrl);
+            NSLog(@"=====remove :%@",fileUrl);
             [NSFileManager.defaultManager removeItemAtURL:fileUrl error:&error];
             if(error){
-                NSLog(@"=====移除失败 file can not be remove: \n%@", error);
+                NSLog(@"=====remove failed: file can not be remove: \n%@", error);
             }
         }
     });
